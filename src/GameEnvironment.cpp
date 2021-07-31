@@ -2,9 +2,42 @@
 #include "ContentManager.hpp"
 #include "globals.h"
 
+GameWorld GameEnvironment::gameWorld = {};
+
+GameEnvironment::GameEnvironment()
+{ // maybe move to gameManager later
+  // setup
+}
+
+bool GameEnvironment::define()
+{
+
+  // ContentManager::LoadStages() // sets stage/stageShort in GameEnvironment::Def_FileNames
+  ContentManager content;
+
+  GameEnvironment::initGameWorld();
+
+  // GameEnvironment::initWorld() // Define the world (create separate class)
+  return false;
+}
+
+void GameEnvironment::initGameWorld()
+{
+  GameEnvironment::gameWorld.Gravity = 1;
+  GameEnvironment::gameWorld.Friction = 1;
+  GameEnvironment::gameWorld.TerminalVelocity = 15;
+  GameEnvironment::gameWorld.WallFriction = 7;
+  GameEnvironment::gameWorld.TileSwitchSpeed = 50;
+}
+
+GameWorld GameEnvironment::getWorld()
+{
+  return gameWorld;
+}
+
 GameVariables_Type GV;
 SavedOptions_Type SavedOptions;
-World_Type World;
+// World_Type World;
 char Path_to_ini[300];
 
 // ##############################################
