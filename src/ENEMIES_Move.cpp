@@ -56,8 +56,8 @@ void ENEMY_Walk(int EnemyNumber)
 {
   if(Enemy[EnemyNumber].Alive)
   {
-    if(Enemy[EnemyNumber].Direction == NPC_RIGHT){Enemy[EnemyNumber].RunVelocity += 1.5*World.Friction;}
-    if(Enemy[EnemyNumber].Direction == NPC_LEFT) {Enemy[EnemyNumber].RunVelocity -= 1.5*World.Friction;}
+    if(Enemy[EnemyNumber].Direction == NPC_RIGHT){Enemy[EnemyNumber].RunVelocity += 1.5*GameEnvironment::getWorld().Friction;}
+    if(Enemy[EnemyNumber].Direction == NPC_LEFT) {Enemy[EnemyNumber].RunVelocity -= 1.5*GameEnvironment::getWorld().Friction;}
 
     // MAX SPEED
     if(Enemy[EnemyNumber].RunVelocity < -Enemy_Type[Enemy[EnemyNumber].Type].RunStrength){Enemy[EnemyNumber].RunVelocity = -Enemy_Type[Enemy[EnemyNumber].Type].RunStrength;} // MAX SPEED
@@ -93,7 +93,7 @@ void ENEMY_Jump(int EnemyNumber)
 void ENEMY_Gravity(int EnemyNumber)
 {
 
-  Enemy[EnemyNumber].JumpVelocity -= World.Gravity;
+  Enemy[EnemyNumber].JumpVelocity -= GameEnvironment::getWorld().Gravity;
 
 //  if(Enemy[EnemyNumber].JumpVelocity < -World.TerminalVelocity){Enemy[EnemyNumber].JumpVelocity = -World.TerminalVelocity;}
 

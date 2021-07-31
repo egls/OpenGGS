@@ -1,5 +1,7 @@
 #include "globals.h"
 
+#include "GameEnvironment.hpp"
+
 void Sprite_SmallCoin_Gravity(int SmallCoinNumber);
 void Sprite_PowerUp_Gravity(int PowerUpNumber);
 void Sprite_Platform_Move();
@@ -68,7 +70,7 @@ void SPRITES_Move()
 void Sprite_SmallCoin_Gravity(int SmallCoinNumber)
 {
 
-  Sprite_SmallCoin[SmallCoinNumber].JumpVelocity -= World.Gravity;
+  Sprite_SmallCoin[SmallCoinNumber].JumpVelocity -= GameEnvironment::getWorld().Gravity;
 
   Sprite_SmallCoin[SmallCoinNumber].PosY -= int(Sprite_SmallCoin[SmallCoinNumber].JumpVelocity/2);
 
@@ -88,11 +90,11 @@ void Sprite_SmallCoin_Gravity(int SmallCoinNumber)
 
 void Sprite_PowerUp_Gravity(int PowerUpNumber)
 {
-  Sprite_PowerUp[PowerUpNumber].JumpVelocity -= World.Gravity;
+  Sprite_PowerUp[PowerUpNumber].JumpVelocity -= GameEnvironment::getWorld().Gravity;
 
   Sprite_PowerUp[PowerUpNumber].PosY -= int(Sprite_PowerUp[PowerUpNumber].JumpVelocity/2);
 
-  if(Sprite_PowerUp[PowerUpNumber].JumpVelocity < -World.TerminalVelocity){Sprite_PowerUp[PowerUpNumber].JumpVelocity = -World.TerminalVelocity;}
+  if(Sprite_PowerUp[PowerUpNumber].JumpVelocity < -GameEnvironment::getWorld().TerminalVelocity){Sprite_PowerUp[PowerUpNumber].JumpVelocity = -GameEnvironment::getWorld().TerminalVelocity;}
 }
 
 // ##############################################
@@ -143,8 +145,8 @@ void Sprite_PowerUp_Tilecollision(int PowerUpNumber)
 void Sprite_PowerUp_Walk(int PowerUpNumber)
 {
 
-  if(Sprite_PowerUp[PowerUpNumber].Direction == NPC_RIGHT){Sprite_PowerUp[PowerUpNumber].RunVelocity += 1*World.Friction;}
-  if(Sprite_PowerUp[PowerUpNumber].Direction == NPC_LEFT) {Sprite_PowerUp[PowerUpNumber].RunVelocity -= 1*World.Friction;}
+  if(Sprite_PowerUp[PowerUpNumber].Direction == NPC_RIGHT){Sprite_PowerUp[PowerUpNumber].RunVelocity += 1*GameEnvironment::getWorld().Friction;}
+  if(Sprite_PowerUp[PowerUpNumber].Direction == NPC_LEFT) {Sprite_PowerUp[PowerUpNumber].RunVelocity -= 1*GameEnvironment::getWorld().Friction;}
 
   // MAX SPEED
   if(Sprite_PowerUp[PowerUpNumber].RunVelocity < -Sprite_PowerUp[PowerUpNumber].RunStrength){Sprite_PowerUp[PowerUpNumber].RunVelocity = -Sprite_PowerUp[PowerUpNumber].RunStrength;} // MAX SPEED
@@ -256,7 +258,7 @@ void Sprite_Platform_Move()
 
 void SPRITE_DropStone_Gravity(int DropStoneNumber)
 {
-  Sprite_DropStone[DropStoneNumber].JumpVelocity -= World.Gravity;
+  Sprite_DropStone[DropStoneNumber].JumpVelocity -= GameEnvironment::getWorld().Gravity;
 
   if(Sprite_DropStone[DropStoneNumber].JumpVelocity < 0)
   {
@@ -271,7 +273,7 @@ void SPRITE_DropStone_Gravity(int DropStoneNumber)
 
   Sprite_DropStone[DropStoneNumber].PosY -= int(Sprite_DropStone[DropStoneNumber].JumpVelocity/2);
 
-  if(Sprite_DropStone[DropStoneNumber].JumpVelocity < -World.TerminalVelocity){Sprite_DropStone[DropStoneNumber].JumpVelocity = -World.TerminalVelocity;}
+  if(Sprite_DropStone[DropStoneNumber].JumpVelocity < -GameEnvironment::getWorld().TerminalVelocity){Sprite_DropStone[DropStoneNumber].JumpVelocity = -GameEnvironment::getWorld().TerminalVelocity;}
 
 
 }

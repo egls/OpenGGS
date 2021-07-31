@@ -50,8 +50,8 @@ void SPRITE_Bullet_Move()
 {
   if(PC.TargetEnemy == 0)
   {
-    if(Sprite_Bullet.Direction == PC_RIGHT){Sprite_Bullet.RunVelocity += 1*World.Friction;}
-    if(Sprite_Bullet.Direction == PC_LEFT) {Sprite_Bullet.RunVelocity -= 1*World.Friction;}
+    if(Sprite_Bullet.Direction == PC_RIGHT){Sprite_Bullet.RunVelocity += 1*GameEnvironment::getWorld().Friction;}
+    if(Sprite_Bullet.Direction == PC_LEFT) {Sprite_Bullet.RunVelocity -= 1*GameEnvironment::getWorld().Friction;}
 
     // MAX SPEED
     if(Sprite_Bullet.RunVelocity < -Sprite_Bullet.RunStrength){Sprite_Bullet.RunVelocity = -Sprite_Bullet.RunStrength;} // MAX SPEED
