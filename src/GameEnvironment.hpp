@@ -44,27 +44,15 @@ void Options_Save();
 void Options_Load();
 void Option_GameType_Load();
 
-// ##############################################
-// ##############################################
-// ##############################################
-
-typedef struct {
-  int Gravity;           //
-  int TerminalVelocity;  // MAXIMUM FALLING SPEED
-  float Friction;        //
-  int WallFriction;      // TERMINAL VELOCITY WHEN "GRINDING" DOWN A WALL
-  int TileSwitchSpeed;
-} World_Type;
-
-extern World_Type World;
 
 // ##############################################
 // ##############################################
 // ##############################################
 
-typedef struct {
-  char Stage[20][128];
-  char StageShort[20][128];
+typedef struct
+{
+  char Stage[20][128];      // ContentManager::stagesList
+  char StageShort[20][128]; // ContentManager::stagesShoertList
   char Tiles[128];
   char Player[128];
   char PlayerDefinition[128];
@@ -86,7 +74,8 @@ extern Def_FileNames FileName; // FILENAME BUFFERS
 // ##############################################
 // ##############################################
 
-typedef struct {
+typedef struct
+{
   int Mode;
   int Screen_Width;
   int Screen_Height;
@@ -122,7 +111,8 @@ extern int CurrentScreenMode;
 // ##############################################
 // ##############################################
 
-typedef struct {
+typedef struct
+{
   int Screen_Width;
   int Screen_Height;
   int VolumeSounds;

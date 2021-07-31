@@ -28,7 +28,7 @@ void LOOP_Gameloop_Standard()
   if(StageC64.BackgroundColour == 1){AUDIO_Music_Play(MUSIC_INDOORS);}
 
 
-  while(!QuitProgram && !QuitToMenu)
+  while(!QuitProgram && !QuitToMenu) // Gameloop
   {
     Unified.Jump = false;
 
