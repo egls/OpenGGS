@@ -1,4 +1,5 @@
 #include "globals.h"
+#include "GameEnvironment.hpp"
 
 void ENEMY_Gravity(int EnemyNumber);
 void ENEMY_Walk(int EnemyNumber);
