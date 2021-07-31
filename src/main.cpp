@@ -1,3 +1,5 @@
+#include "GameEnvironment.hpp"
+
 #include "globals.h"
 
 // needed because SDL does not create stdout and stderr anymore...
@@ -18,6 +20,9 @@ void iniSetup();
 
 int main( int argc, char* args[] )
 {
+
+  auto defined = GameEnvironment::define();
+
   GAME_ENVIRONMENT_Define();
 
   init();               // Start up SDL and create window
