@@ -1,5 +1,5 @@
 #include "globals.h"
-
+#include "GameEnvironment.hpp"
 // ##############################################
 // ##############################################
 // ##############################################
@@ -26,8 +26,8 @@ void PC_Gravity()
 {
 
   // ADD GRAVITY
-  PC.JumpVelocity -= World.Gravity;
-  if(PC.JumpVelocity < -World.TerminalVelocity){PC.JumpVelocity = -World.TerminalVelocity;}
+  PC.JumpVelocity -= GameEnvironment::getWorld().Gravity;
+  if(PC.JumpVelocity < -GameEnvironment::getWorld().TerminalVelocity){PC.JumpVelocity = -GameEnvironment::getWorld().TerminalVelocity;}
 
   //PC.PosY -= int(PC.JumpVelocity/2);
   PC.MovementVertical = int(PC.JumpVelocity/2);
@@ -59,17 +59,17 @@ void PC_Gravity()
   //if(PC.JumpVelocity < -World.WallFriction && PC.WallGrinding){PC.JumpVelocity = -World.WallFriction;}
 
   // KEY_DOWN = FASTER DESCENDING
-  if(Key_DOWN){PC.JumpVelocity = -World.TerminalVelocity;}
+  if(Key_DOWN){PC.JumpVelocity = -GameEnvironment::getWorld().TerminalVelocity;}
 
   // SLOW DOWN UPWARD MOMENTUM IF JUMP BUTTON IS RELEASED
-  if(!PC.Dead && !Unified.Jump && PC.JumpVelocity>0){PC.JumpVelocity -= 4 * World.Gravity;}
+  if(!PC.Dead && !Unified.Jump && PC.JumpVelocity>0){PC.JumpVelocity -= 4 * GameEnvironment::getWorld().Gravity;}
 
   if(PC.Dead)
   {
     PC.PosY -= int(PC.JumpVelocity/2);
     if(PC.JumpVelocity>0)
     {
-      PC.JumpVelocity -= 4 * World.Gravity;
+      PC.JumpVelocity -= 4 * GameEnvironment::getWorld().Gravity;
     }
   }
 

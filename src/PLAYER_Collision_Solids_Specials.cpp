@@ -1,5 +1,5 @@
 #include "globals.h"
-
+#include "GameEnvironment.hpp"
 // ##############################################
 // ##############################################
 // ##############################################
@@ -36,24 +36,24 @@ void PC_Collision_PowerUpBlock()
       if(StageC64.TileNumber[TileX-2][TileY] == StageC64.TileNumber[TileX][TileY]-2 &&
          TileType[StageC64.TileNumber[TileX-2][TileY]].PowerUpBlock)
       {
-        StageC64.TileNumber[TileX-2][TileY-1] = 587; StageC64.AnimationCounter[TileX-2][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX-1][TileY-1] = 588; StageC64.AnimationCounter[TileX-1][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX][TileY-1] = 589;   StageC64.AnimationCounter[TileX][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX-2][TileY] = 627;   StageC64.AnimationCounter[TileX-2][TileY-1] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX-1][TileY] = 628;   StageC64.AnimationCounter[TileX-1][TileY-1] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX][TileY] = 629;     StageC64.AnimationCounter[TileX][TileY-1] = World.TileSwitchSpeed;
+        StageC64.TileNumber[TileX-2][TileY-1] = 587; StageC64.AnimationCounter[TileX-2][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX-1][TileY-1] = 588; StageC64.AnimationCounter[TileX-1][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX][TileY-1] = 589;   StageC64.AnimationCounter[TileX][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX-2][TileY] = 627;   StageC64.AnimationCounter[TileX-2][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX-1][TileY] = 628;   StageC64.AnimationCounter[TileX-1][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX][TileY] = 629;     StageC64.AnimationCounter[TileX][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
         HitAPowerUpBlock = false;
         SPRITE_PowerUp_Activate((TileX-1)*TS.Tile_Width, (TileY-2)*TS.Tile_Height);
       }
       if(HitAPowerUpBlock && StageC64.TileNumber[TileX+2][TileY] == StageC64.TileNumber[TileX][TileY]+2 &&
          TileType[StageC64.TileNumber[TileX+2][TileY]].PowerUpBlock)
       {
-        StageC64.TileNumber[TileX][TileY-1] = 587;   StageC64.AnimationCounter[TileX][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX+1][TileY-1] = 588; StageC64.AnimationCounter[TileX+1][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX+2][TileY-1] = 589; StageC64.AnimationCounter[TileX+2][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX][TileY] = 627;     StageC64.AnimationCounter[TileX][TileY-1] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX+1][TileY] = 628;   StageC64.AnimationCounter[TileX+1][TileY-1] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX+2][TileY] = 629;   StageC64.AnimationCounter[TileX+2][TileY-1] = World.TileSwitchSpeed;
+        StageC64.TileNumber[TileX][TileY-1] = 587;   StageC64.AnimationCounter[TileX][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX+1][TileY-1] = 588; StageC64.AnimationCounter[TileX+1][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX+2][TileY-1] = 589; StageC64.AnimationCounter[TileX+2][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX][TileY] = 627;     StageC64.AnimationCounter[TileX][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX+1][TileY] = 628;   StageC64.AnimationCounter[TileX+1][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX+2][TileY] = 629;   StageC64.AnimationCounter[TileX+2][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
         HitAPowerUpBlock = false;
         SPRITE_PowerUp_Activate((TileX+1)*TS.Tile_Width, (TileY-2)*TS.Tile_Height);
       }
@@ -63,12 +63,12 @@ void PC_Collision_PowerUpBlock()
          TileType[StageC64.TileNumber[TileX+1][TileY]].PowerUpBlock &&
          TileType[StageC64.TileNumber[TileX-1][TileY]].PowerUpBlock)
       {
-        StageC64.TileNumber[TileX-1][TileY-1] = 587; StageC64.AnimationCounter[TileX-1][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX][TileY-1] = 588;   StageC64.AnimationCounter[TileX][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX+1][TileY-1] = 589; StageC64.AnimationCounter[TileX+1][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX-1][TileY] = 627;   StageC64.AnimationCounter[TileX-1][TileY-1] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX][TileY] = 628;     StageC64.AnimationCounter[TileX][TileY-1] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX+1][TileY] = 629;   StageC64.AnimationCounter[TileX+1][TileY-1] = World.TileSwitchSpeed;
+        StageC64.TileNumber[TileX-1][TileY-1] = 587; StageC64.AnimationCounter[TileX-1][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX][TileY-1] = 588;   StageC64.AnimationCounter[TileX][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX+1][TileY-1] = 589; StageC64.AnimationCounter[TileX+1][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX-1][TileY] = 627;   StageC64.AnimationCounter[TileX-1][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX][TileY] = 628;     StageC64.AnimationCounter[TileX][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX+1][TileY] = 629;   StageC64.AnimationCounter[TileX+1][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
         SPRITE_PowerUp_Activate(TileX*TS.Tile_Width, (TileY-2)*TS.Tile_Height);
       }
     }
@@ -111,24 +111,24 @@ void PC_Collision_CoinBlock()
       if(StageC64.TileNumber[TileX-2][TileY] == StageC64.TileNumber[TileX][TileY]-2 &&
          TileType[StageC64.TileNumber[TileX-2][TileY]].CoinBlock)
       {
-        StageC64.TileNumber[TileX-2][TileY] += 3;   StageC64.AnimationCounter[TileX-2][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX-1][TileY] += 3;   StageC64.AnimationCounter[TileX-1][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX][TileY] += 3;     StageC64.AnimationCounter[TileX][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX-2][TileY-1] += 3; StageC64.AnimationCounter[TileX-2][TileY-1] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX-1][TileY-1] += 3; StageC64.AnimationCounter[TileX-1][TileY-1] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX][TileY-1] += 3;   StageC64.AnimationCounter[TileX][TileY-1] = World.TileSwitchSpeed;
+        StageC64.TileNumber[TileX-2][TileY] += 3;   StageC64.AnimationCounter[TileX-2][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX-1][TileY] += 3;   StageC64.AnimationCounter[TileX-1][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX][TileY] += 3;     StageC64.AnimationCounter[TileX][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX-2][TileY-1] += 3; StageC64.AnimationCounter[TileX-2][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX-1][TileY-1] += 3; StageC64.AnimationCounter[TileX-1][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX][TileY-1] += 3;   StageC64.AnimationCounter[TileX][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
         HitACoinBlock = false;
         SPRITE_SmallCoin_Activate((TileX-1)*TS.Tile_Width, (TileY-2)*TS.Tile_Height);
       }
       if(HitACoinBlock && StageC64.TileNumber[TileX+2][TileY] == StageC64.TileNumber[TileX][TileY]+2 &&
          TileType[StageC64.TileNumber[TileX+2][TileY]].CoinBlock)
       {
-        StageC64.TileNumber[TileX+2][TileY] += 3;   StageC64.AnimationCounter[TileX+2][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX+1][TileY] += 3;   StageC64.AnimationCounter[TileX+1][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX][TileY] += 3;     StageC64.AnimationCounter[TileX][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX+2][TileY-1] += 3; StageC64.AnimationCounter[TileX+2][TileY-1] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX+1][TileY-1] += 3; StageC64.AnimationCounter[TileX+1][TileY-1] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX][TileY-1] += 3;   StageC64.AnimationCounter[TileX][TileY-1] = World.TileSwitchSpeed;
+        StageC64.TileNumber[TileX+2][TileY] += 3;   StageC64.AnimationCounter[TileX+2][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX+1][TileY] += 3;   StageC64.AnimationCounter[TileX+1][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX][TileY] += 3;     StageC64.AnimationCounter[TileX][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX+2][TileY-1] += 3; StageC64.AnimationCounter[TileX+2][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX+1][TileY-1] += 3; StageC64.AnimationCounter[TileX+1][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX][TileY-1] += 3;   StageC64.AnimationCounter[TileX][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
         HitACoinBlock = false;
         SPRITE_SmallCoin_Activate((TileX+1)*TS.Tile_Width, (TileY-2)*TS.Tile_Height);
       }
@@ -138,12 +138,12 @@ void PC_Collision_CoinBlock()
          TileType[StageC64.TileNumber[TileX+1][TileY]].CoinBlock &&
          TileType[StageC64.TileNumber[TileX-1][TileY]].CoinBlock)
       {
-        StageC64.TileNumber[TileX-1][TileY] += 3;   StageC64.AnimationCounter[TileX-1][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX+1][TileY] += 3;   StageC64.AnimationCounter[TileX+1][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX][TileY] += 3;     StageC64.AnimationCounter[TileX][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX-1][TileY-1] += 3; StageC64.AnimationCounter[TileX-1][TileY-1] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX+1][TileY-1] += 3; StageC64.AnimationCounter[TileX+1][TileY-1] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX][TileY-1] += 3;   StageC64.AnimationCounter[TileX][TileY-1] = World.TileSwitchSpeed;
+        StageC64.TileNumber[TileX-1][TileY] += 3;   StageC64.AnimationCounter[TileX-1][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX+1][TileY] += 3;   StageC64.AnimationCounter[TileX+1][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX][TileY] += 3;     StageC64.AnimationCounter[TileX][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX-1][TileY-1] += 3; StageC64.AnimationCounter[TileX-1][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX+1][TileY-1] += 3; StageC64.AnimationCounter[TileX+1][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX][TileY-1] += 3;   StageC64.AnimationCounter[TileX][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
         SPRITE_SmallCoin_Activate(TileX*TS.Tile_Width, (TileY-2)*TS.Tile_Height);
       }
     }
@@ -186,24 +186,24 @@ void PC_Collision_CoinBlockHelmet()
       if(StageC64.TileNumber[TileX-2][TileY] == StageC64.TileNumber[TileX][TileY]-2 &&
          TileType[StageC64.TileNumber[TileX-2][TileY]].CoinBlockHelmet)
       {
-        StageC64.TileNumber[TileX-2][TileY] += 3;   StageC64.AnimationCounter[TileX-2][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX-1][TileY] += 3;   StageC64.AnimationCounter[TileX-1][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX][TileY] += 3;     StageC64.AnimationCounter[TileX][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX-2][TileY-1] += 3; StageC64.AnimationCounter[TileX-2][TileY-1] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX-1][TileY-1] += 3; StageC64.AnimationCounter[TileX-1][TileY-1] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX][TileY-1] += 3;   StageC64.AnimationCounter[TileX][TileY-1] = World.TileSwitchSpeed;
+        StageC64.TileNumber[TileX-2][TileY] += 3;   StageC64.AnimationCounter[TileX-2][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX-1][TileY] += 3;   StageC64.AnimationCounter[TileX-1][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX][TileY] += 3;     StageC64.AnimationCounter[TileX][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX-2][TileY-1] += 3; StageC64.AnimationCounter[TileX-2][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX-1][TileY-1] += 3; StageC64.AnimationCounter[TileX-1][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX][TileY-1] += 3;   StageC64.AnimationCounter[TileX][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
         HitACoinBlock = false;
         SPRITE_SmallCoin_Activate((TileX-1)*TS.Tile_Width, (TileY-2)*TS.Tile_Height);
       }
       if(HitACoinBlock && StageC64.TileNumber[TileX+2][TileY] == StageC64.TileNumber[TileX][TileY]+2 &&
          TileType[StageC64.TileNumber[TileX+2][TileY]].CoinBlockHelmet)
       {
-        StageC64.TileNumber[TileX+2][TileY] += 3;   StageC64.AnimationCounter[TileX+2][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX+1][TileY] += 3;   StageC64.AnimationCounter[TileX+1][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX][TileY] += 3;     StageC64.AnimationCounter[TileX][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX+2][TileY-1] += 3; StageC64.AnimationCounter[TileX+2][TileY-1] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX+1][TileY-1] += 3; StageC64.AnimationCounter[TileX+1][TileY-1] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX][TileY-1] += 3;   StageC64.AnimationCounter[TileX][TileY-1] = World.TileSwitchSpeed;
+        StageC64.TileNumber[TileX+2][TileY] += 3;   StageC64.AnimationCounter[TileX+2][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX+1][TileY] += 3;   StageC64.AnimationCounter[TileX+1][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX][TileY] += 3;     StageC64.AnimationCounter[TileX][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX+2][TileY-1] += 3; StageC64.AnimationCounter[TileX+2][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX+1][TileY-1] += 3; StageC64.AnimationCounter[TileX+1][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX][TileY-1] += 3;   StageC64.AnimationCounter[TileX][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
         HitACoinBlock = false;
         SPRITE_SmallCoin_Activate((TileX+1)*TS.Tile_Width, (TileY-2)*TS.Tile_Height);
       }
@@ -213,12 +213,12 @@ void PC_Collision_CoinBlockHelmet()
          TileType[StageC64.TileNumber[TileX+1][TileY]].CoinBlockHelmet &&
          TileType[StageC64.TileNumber[TileX-1][TileY]].CoinBlockHelmet)
       {
-        StageC64.TileNumber[TileX-1][TileY] += 3;   StageC64.AnimationCounter[TileX-1][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX+1][TileY] += 3;   StageC64.AnimationCounter[TileX+1][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX][TileY] += 3;     StageC64.AnimationCounter[TileX][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX-1][TileY-1] += 3; StageC64.AnimationCounter[TileX-1][TileY-1] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX+1][TileY-1] += 3; StageC64.AnimationCounter[TileX+1][TileY-1] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX][TileY-1] += 3;   StageC64.AnimationCounter[TileX][TileY-1] = World.TileSwitchSpeed;
+        StageC64.TileNumber[TileX-1][TileY] += 3;   StageC64.AnimationCounter[TileX-1][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX+1][TileY] += 3;   StageC64.AnimationCounter[TileX+1][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX][TileY] += 3;     StageC64.AnimationCounter[TileX][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX-1][TileY-1] += 3; StageC64.AnimationCounter[TileX-1][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX+1][TileY-1] += 3; StageC64.AnimationCounter[TileX+1][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX][TileY-1] += 3;   StageC64.AnimationCounter[TileX][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
         SPRITE_SmallCoin_Activate(TileX*TS.Tile_Width, (TileY-2)*TS.Tile_Height);
       }
     }
@@ -260,24 +260,24 @@ void PC_Collision_Breakable()
       if(StageC64.TileNumber[TileX-2][TileY] == StageC64.TileNumber[TileX][TileY]-2 &&
          TileType[StageC64.TileNumber[TileX-2][TileY]].Breakable)
       {
-        StageC64.TileNumber[TileX-2][TileY] += 3;   StageC64.AnimationCounter[TileX-2][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX-1][TileY] += 3;   StageC64.AnimationCounter[TileX-1][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX][TileY] += 3;     StageC64.AnimationCounter[TileX][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX-2][TileY-1] += 3; StageC64.AnimationCounter[TileX-2][TileY-1] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX-1][TileY-1] += 3; StageC64.AnimationCounter[TileX-1][TileY-1] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX][TileY-1] += 3;   StageC64.AnimationCounter[TileX][TileY-1] = World.TileSwitchSpeed;
+        StageC64.TileNumber[TileX-2][TileY] += 3;   StageC64.AnimationCounter[TileX-2][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX-1][TileY] += 3;   StageC64.AnimationCounter[TileX-1][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX][TileY] += 3;     StageC64.AnimationCounter[TileX][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX-2][TileY-1] += 3; StageC64.AnimationCounter[TileX-2][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX-1][TileY-1] += 3; StageC64.AnimationCounter[TileX-1][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX][TileY-1] += 3;   StageC64.AnimationCounter[TileX][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
         HitABreakable = false;
         AUDIO_Sound_Play(AUDIO_CRACK);
       }
       if(HitABreakable && StageC64.TileNumber[TileX+2][TileY] == StageC64.TileNumber[TileX][TileY]+2 &&
          TileType[StageC64.TileNumber[TileX+2][TileY]].Breakable)
       {
-        StageC64.TileNumber[TileX+2][TileY] += 3;   StageC64.AnimationCounter[TileX+2][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX+1][TileY] += 3;   StageC64.AnimationCounter[TileX+1][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX][TileY] += 3;     StageC64.AnimationCounter[TileX][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX+2][TileY-1] += 3; StageC64.AnimationCounter[TileX+2][TileY-1] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX+1][TileY-1] += 3; StageC64.AnimationCounter[TileX+1][TileY-1] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX][TileY-1] += 3;   StageC64.AnimationCounter[TileX][TileY-1] = World.TileSwitchSpeed;
+        StageC64.TileNumber[TileX+2][TileY] += 3;   StageC64.AnimationCounter[TileX+2][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX+1][TileY] += 3;   StageC64.AnimationCounter[TileX+1][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX][TileY] += 3;     StageC64.AnimationCounter[TileX][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX+2][TileY-1] += 3; StageC64.AnimationCounter[TileX+2][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX+1][TileY-1] += 3; StageC64.AnimationCounter[TileX+1][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX][TileY-1] += 3;   StageC64.AnimationCounter[TileX][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
         HitABreakable = false;
         AUDIO_Sound_Play(AUDIO_CRACK);
       }
@@ -287,12 +287,12 @@ void PC_Collision_Breakable()
          TileType[StageC64.TileNumber[TileX+1][TileY]].Breakable &&
          TileType[StageC64.TileNumber[TileX-1][TileY]].Breakable)
       {
-        StageC64.TileNumber[TileX-1][TileY] += 3;   StageC64.AnimationCounter[TileX-1][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX+1][TileY] += 3;   StageC64.AnimationCounter[TileX+1][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX][TileY] += 3;     StageC64.AnimationCounter[TileX][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX-1][TileY-1] += 3; StageC64.AnimationCounter[TileX-1][TileY-1] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX+1][TileY-1] += 3; StageC64.AnimationCounter[TileX+1][TileY-1] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX][TileY-1] += 3;   StageC64.AnimationCounter[TileX][TileY-1] = World.TileSwitchSpeed;
+        StageC64.TileNumber[TileX-1][TileY] += 3;   StageC64.AnimationCounter[TileX-1][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX+1][TileY] += 3;   StageC64.AnimationCounter[TileX+1][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX][TileY] += 3;     StageC64.AnimationCounter[TileX][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX-1][TileY-1] += 3; StageC64.AnimationCounter[TileX-1][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX+1][TileY-1] += 3; StageC64.AnimationCounter[TileX+1][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX][TileY-1] += 3;   StageC64.AnimationCounter[TileX][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
         AUDIO_Sound_Play(AUDIO_CRACK);
       }
     }
@@ -345,12 +345,12 @@ void PC_Collision_DropStone()
         Sprite_DropStone[DropStoneNumber].PosX = (TileX-2)*TS.Tile_Width;
         Sprite_DropStone[DropStoneNumber].PosY = (TileY-1)*TS.Tile_Width;
 
-        StageC64.TileNumber[TileX-2][TileY] = 0;   StageC64.AnimationCounter[TileX-2][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX-1][TileY] = 0;   StageC64.AnimationCounter[TileX-1][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX][TileY] = 0;     StageC64.AnimationCounter[TileX][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX-2][TileY-1] = 0; StageC64.AnimationCounter[TileX-2][TileY-1] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX-1][TileY-1] = 0; StageC64.AnimationCounter[TileX-1][TileY-1] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX][TileY-1] = 0;   StageC64.AnimationCounter[TileX][TileY-1] = World.TileSwitchSpeed;
+        StageC64.TileNumber[TileX-2][TileY] = 0;   StageC64.AnimationCounter[TileX-2][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX-1][TileY] = 0;   StageC64.AnimationCounter[TileX-1][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX][TileY] = 0;     StageC64.AnimationCounter[TileX][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX-2][TileY-1] = 0; StageC64.AnimationCounter[TileX-2][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX-1][TileY-1] = 0; StageC64.AnimationCounter[TileX-1][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX][TileY-1] = 0;   StageC64.AnimationCounter[TileX][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
         HitABreakable = false;
         AUDIO_Sound_Play(AUDIO_CRACK);
       }
@@ -360,12 +360,12 @@ void PC_Collision_DropStone()
         Sprite_DropStone[DropStoneNumber].PosX = (TileX)*TS.Tile_Width;
         Sprite_DropStone[DropStoneNumber].PosY = (TileY-1)*TS.Tile_Width;
 
-        StageC64.TileNumber[TileX+2][TileY] = 0;   StageC64.AnimationCounter[TileX+2][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX+1][TileY] = 0;   StageC64.AnimationCounter[TileX+1][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX][TileY] = 0;     StageC64.AnimationCounter[TileX][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX+2][TileY-1] = 0; StageC64.AnimationCounter[TileX+2][TileY-1] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX+1][TileY-1] = 0; StageC64.AnimationCounter[TileX+1][TileY-1] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX][TileY-1] = 0;   StageC64.AnimationCounter[TileX][TileY-1] = World.TileSwitchSpeed;
+        StageC64.TileNumber[TileX+2][TileY] = 0;   StageC64.AnimationCounter[TileX+2][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX+1][TileY] = 0;   StageC64.AnimationCounter[TileX+1][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX][TileY] = 0;     StageC64.AnimationCounter[TileX][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX+2][TileY-1] = 0; StageC64.AnimationCounter[TileX+2][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX+1][TileY-1] = 0; StageC64.AnimationCounter[TileX+1][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX][TileY-1] = 0;   StageC64.AnimationCounter[TileX][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
         HitABreakable = false;
         AUDIO_Sound_Play(AUDIO_CRACK);
       }
@@ -377,12 +377,12 @@ void PC_Collision_DropStone()
       {
         Sprite_DropStone[DropStoneNumber].PosX = (TileX-1)*TS.Tile_Width;
         Sprite_DropStone[DropStoneNumber].PosY = (TileY-1)*TS.Tile_Width;
-        StageC64.TileNumber[TileX-1][TileY] = 0;   StageC64.AnimationCounter[TileX-1][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX+1][TileY] = 0;   StageC64.AnimationCounter[TileX+1][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX][TileY] = 0;     StageC64.AnimationCounter[TileX][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX-1][TileY-1] = 0; StageC64.AnimationCounter[TileX-1][TileY-1] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX+1][TileY-1] = 0; StageC64.AnimationCounter[TileX+1][TileY-1] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX][TileY-1] = 0;   StageC64.AnimationCounter[TileX][TileY-1] = World.TileSwitchSpeed;
+        StageC64.TileNumber[TileX-1][TileY] = 0;   StageC64.AnimationCounter[TileX-1][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX+1][TileY] = 0;   StageC64.AnimationCounter[TileX+1][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX][TileY] = 0;     StageC64.AnimationCounter[TileX][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX-1][TileY-1] = 0; StageC64.AnimationCounter[TileX-1][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX+1][TileY-1] = 0; StageC64.AnimationCounter[TileX+1][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX][TileY-1] = 0;   StageC64.AnimationCounter[TileX][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
         AUDIO_Sound_Play(AUDIO_CRACK);
       }
     }
@@ -433,23 +433,23 @@ void PC_Collision_WarpStone()
       if(StageC64.TileNumber[TileX-2][TileY] == StageC64.TileNumber[TileX][TileY]-2 &&
          TileType[StageC64.TileNumber[TileX-2][TileY]].WarpStone)
       {
-        StageC64.TileNumber[TileX-2][TileY] = 603;   StageC64.AnimationCounter[TileX-2][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX-1][TileY] = 604;   StageC64.AnimationCounter[TileX-1][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX][TileY] = 605;     StageC64.AnimationCounter[TileX][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX-2][TileY-1] = 563; StageC64.AnimationCounter[TileX-2][TileY-1] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX-1][TileY-1] = 564; StageC64.AnimationCounter[TileX-1][TileY-1] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX][TileY-1] = 565;   StageC64.AnimationCounter[TileX][TileY-1] = World.TileSwitchSpeed;
+        StageC64.TileNumber[TileX-2][TileY] = 603;   StageC64.AnimationCounter[TileX-2][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX-1][TileY] = 604;   StageC64.AnimationCounter[TileX-1][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX][TileY] = 605;     StageC64.AnimationCounter[TileX][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX-2][TileY-1] = 563; StageC64.AnimationCounter[TileX-2][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX-1][TileY-1] = 564; StageC64.AnimationCounter[TileX-1][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX][TileY-1] = 565;   StageC64.AnimationCounter[TileX][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
         HitAWarpStone = false;
       }
       if(HitAWarpStone && StageC64.TileNumber[TileX+2][TileY] == StageC64.TileNumber[TileX][TileY]+2 &&
          TileType[StageC64.TileNumber[TileX+2][TileY]].WarpStone)
       {
-        StageC64.TileNumber[TileX][TileY] = 603;     StageC64.AnimationCounter[TileX][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX+1][TileY] = 604;   StageC64.AnimationCounter[TileX+1][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX+2][TileY] = 605;   StageC64.AnimationCounter[TileX+2][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX][TileY-1] = 563;   StageC64.AnimationCounter[TileX][TileY-1] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX+1][TileY-1] = 564; StageC64.AnimationCounter[TileX+1][TileY-1] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX+2][TileY-1] = 565; StageC64.AnimationCounter[TileX+2][TileY-1] = World.TileSwitchSpeed;
+        StageC64.TileNumber[TileX][TileY] = 603;     StageC64.AnimationCounter[TileX][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX+1][TileY] = 604;   StageC64.AnimationCounter[TileX+1][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX+2][TileY] = 605;   StageC64.AnimationCounter[TileX+2][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX][TileY-1] = 563;   StageC64.AnimationCounter[TileX][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX+1][TileY-1] = 564; StageC64.AnimationCounter[TileX+1][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX+2][TileY-1] = 565; StageC64.AnimationCounter[TileX+2][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
         HitAWarpStone = false;
       }
       if(HitAWarpStone &&
@@ -458,12 +458,12 @@ void PC_Collision_WarpStone()
          TileType[StageC64.TileNumber[TileX+1][TileY]].WarpStone &&
          TileType[StageC64.TileNumber[TileX-1][TileY]].WarpStone)
       {
-        StageC64.TileNumber[TileX-1][TileY] = 603;   StageC64.AnimationCounter[TileX-1][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX][TileY] = 604;     StageC64.AnimationCounter[TileX][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX+1][TileY] = 605;   StageC64.AnimationCounter[TileX+1][TileY] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX-1][TileY-1] = 563; StageC64.AnimationCounter[TileX-1][TileY-1] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX][TileY-1] = 564;   StageC64.AnimationCounter[TileX][TileY-1] = World.TileSwitchSpeed;
-        StageC64.TileNumber[TileX+1][TileY-1] = 565; StageC64.AnimationCounter[TileX+1][TileY-1] = World.TileSwitchSpeed;
+        StageC64.TileNumber[TileX-1][TileY] = 603;   StageC64.AnimationCounter[TileX-1][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX][TileY] = 604;     StageC64.AnimationCounter[TileX][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX+1][TileY] = 605;   StageC64.AnimationCounter[TileX+1][TileY] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX-1][TileY-1] = 563; StageC64.AnimationCounter[TileX-1][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX][TileY-1] = 564;   StageC64.AnimationCounter[TileX][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
+        StageC64.TileNumber[TileX+1][TileY-1] = 565; StageC64.AnimationCounter[TileX+1][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
       }
     }
 
