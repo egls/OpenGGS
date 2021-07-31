@@ -1,3 +1,5 @@
+#include "GameEnvironment.hpp"
+#include "ContentManager.hpp"
 #include "globals.h"
 
 GameVariables_Type GV;
