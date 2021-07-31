@@ -1,4 +1,4 @@
-
+#pragma once
 #define WORLDWIDTH 50
 #define WORLDHEIGHT 50
 
@@ -10,7 +10,29 @@
 #define RESOLUTION_800x600 20
 #define RESOLUTION_1280x720 30
 
+struct GameWorld
+{
+  int Gravity{};          //
+  int TerminalVelocity{}; // MAXIMUM FALLING SPEED
+  float Friction{};       //
+  int WallFriction{};     // TERMINAL VELOCITY WHEN "GRINDING" DOWN A WALL
+  int TileSwitchSpeed{};
+};
 
+class GameEnvironment
+{
+
+public:
+  GameEnvironment();
+  static bool define();
+
+  static GameWorld getWorld();
+
+private:
+  static void initGameWorld();
+
+  static GameWorld gameWorld;
+};
 
 // ##############################################
 // ##############################################
