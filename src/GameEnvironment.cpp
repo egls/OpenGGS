@@ -46,12 +46,6 @@ char Path_to_ini[300];
 
 void GAME_ENVIRONMENT_Define()
 {
-  STAGES_Files_Names_Load();
-  World.Gravity = 1;
-  World.Friction = 1;
-  World.TerminalVelocity = 15;
-  World.WallFriction = 7;
-  World.TileSwitchSpeed = 50;
 
   Sprite_Bullet.ExplosionAnimation = 0;
   Sprite_Bullet.ExplosionX = 0;
