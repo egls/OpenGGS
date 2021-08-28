@@ -11,12 +11,21 @@ class ContentManager
 public:
     ContentManager();
 
+    // STAGE FILE
     std::list<std::string> getStageList();
-    std::list<std::string> getStageShortList();
+    static std::vector<std::string> getStageShortList();
+    static std::string getSelectedStageFile();
+    static bool selectStageFileToLoad(int stageFileNumber);
+   
 
 private:
     void getStageFileNames(const std::filesystem::directory_entry &dir); // fill stagesList
-
-    std::list<std::string> stageList;
-    std::list<std::string> stageShortList;
+    static std::list<std::string> stageList;
+    static std::vector<std::string> stageShortList_;
+    // std::list<std::string> stageShortList;
+    static std::string selectedStageFile;
 };
+
+// Classes Needed
+
+// class Stage
