@@ -1,5 +1,5 @@
 #include "globals.h"
-
+#include "ContentManager.hpp"
 StageDef_C64 StageC64;
 StageCacheDef_C64 StageCache_C64;
 BackGroundElements_Def BackGroundElements;
