@@ -47,9 +47,6 @@ char Path_to_ini[300];
 void GAME_ENVIRONMENT_Define()
 {
 
-  // in CONTENT_Stages_load_write move to content manager
-  // STAGES_Files_Names_Load(); // DONE
-
   // Sprite_Bullet_Definition in GRAPHISC_Sprites
   Sprite_Bullet.ExplosionAnimation = 0;
   Sprite_Bullet.ExplosionX = 0;
