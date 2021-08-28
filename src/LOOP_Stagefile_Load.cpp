@@ -121,16 +121,16 @@ void LOOP_Stagefile_Load_Draw()
 // ##############################################
 // ##############################################
 
-void Load_Stagefile(int StagefileNumber)
-{
-  if(strncmp("---", FileName.Stage[StagefileNumber], 2) != 0)
-  {
-    snprintf(FileName.Stage[0], sizeof(char) * 128, FileName.Stage[StagefileNumber]);
-    AUDIO_Sound_Play(AUDIO_DISK);
-    STAGES_Import();
-    QuitToMenu = true;
-  }
-}
+// void Load_Stagefile(int StagefileNumber)
+// {
+//   if(strncmp("---", FileName.Stage[StagefileNumber], 2) != 0)
+//   {
+//     snprintf(FileName.Stage[0], sizeof(char) * 128, FileName.Stage[StagefileNumber]); // stage[0] used for setting the loaded stage
+//     AUDIO_Sound_Play(AUDIO_DISK);
+//     STAGES_Import();
+//     QuitToMenu = true;
+//   }
+// }
 
 // ##############################################
 // ##############################################
