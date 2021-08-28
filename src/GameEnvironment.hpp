@@ -51,8 +51,8 @@ void Option_GameType_Load();
 
 typedef struct
 {
-  char Stage[20][128];      // ContentManager::stagesList
-  char StageShort[20][128]; // ContentManager::stagesShoertList
+  // char Stage[20][128];      // ContentManager::stagesList
+  // char StageShort[20][128]; // ContentManager::stagesShoertList
   char Tiles[128];
   char Player[128];
   char PlayerDefinition[128];
