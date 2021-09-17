@@ -17,7 +17,8 @@ void STAGE_Save(int StageNumber)
   int x, y;
   FILE *Stage_File;
   ImportStage_Struct ExportStage; // all the data of one stage (currently approx 35KB per stage!)
-  Stage_File = fopen (FileName.Stage[0], "rb+");
+
+  Stage_File = fopen (ContentManager::getSelectedStageFile().c_str(), "rb+");
   // open file in binary mode
 
   // COPY StageCache_C64 TO Export.Stage
