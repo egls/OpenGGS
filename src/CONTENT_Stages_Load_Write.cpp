@@ -99,7 +99,7 @@ void STAGES_Import()
   int StageNumber = 0;
 
   FILE *Stages_File;
-  Stages_File = fopen (FileName.Stage[0], "rb");
+  Stages_File = fopen (ContentManager::getSelectedStageFile().c_str(), "rb");
 
   if (Stages_File != NULL)
   {
