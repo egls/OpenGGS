@@ -11,7 +11,7 @@
 #include <stdlib.h>     // srand
 #include <time.h>
 
-#include "AUDIO.h"
+#include "Audio.hpp"
 #include "CONTENT_Stages.h"
 #include "CONTENT_Player.h"
 #include "CONTENT_Tiles_and_Sprites.h"

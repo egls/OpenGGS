@@ -33,26 +33,26 @@ void LOOP_Menu()
     {
       Menu.ActiveMainMenu += 1;
       if(Menu.ActiveMainMenu > Menu.MenuEntriesMainMenu-1){Menu.ActiveMainMenu = Menu.MenuEntriesMainMenu-1;}
-      AUDIO_Sound_Play(AUDIO_CLICK);
+      AUDIO_Sound_Play(Audio::AudioTypeEnum::AUDIO_CLICK);
     }
 
     if(Key_LEFT_pressed || Joy_LEFT_pressed)
     {
       Menu.ActiveMainMenu -= 1;
       if(Menu.ActiveMainMenu < 0){Menu.ActiveMainMenu = 0;}
-      AUDIO_Sound_Play(AUDIO_CLICK);
+      AUDIO_Sound_Play(Audio::AudioTypeEnum::AUDIO_CLICK);
     }
 
     if(Key_DOWN_pressed || Joy_DOWN_pressed)
     {
       if(Menu.ActiveMainMenu < Menu.MenuEntriesMainMenu-Menu.Cols){Menu.ActiveMainMenu = Menu.ActiveMainMenu + Menu.Cols;}
-      AUDIO_Sound_Play(AUDIO_CLICK);
+      AUDIO_Sound_Play(Audio::AudioTypeEnum::AUDIO_CLICK);
     }
 
     if(Key_UP_pressed || Joy_UP_pressed)
     {
       if(Menu.ActiveMainMenu > Menu.Cols-1){Menu.ActiveMainMenu = Menu.ActiveMainMenu - Menu.Cols;}
-      AUDIO_Sound_Play(AUDIO_CLICK);
+      AUDIO_Sound_Play(Audio::AudioTypeEnum::AUDIO_CLICK);
     }
 
 
@@ -86,7 +86,7 @@ void LOOP_Menu()
     if(QuitToMenu)
     {
       QuitToMenu = false;
-      AUDIO_Music_Play(MUSIC_MENU);
+      AUDIO_Music_Play(Audio::MusicTypeEnum::MUSIC_MENU);
     }
     Update_Screen();  // draw the scene
   }

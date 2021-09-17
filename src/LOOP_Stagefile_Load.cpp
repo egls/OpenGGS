@@ -33,27 +33,27 @@ void LOOP_Stagefile_Load()
 
     if(Key_RIGHT_pressed || Joy_RIGHT_pressed)
     {
-      AUDIO_Sound_Play(AUDIO_CLICK);
+      AUDIO_Sound_Play(Audio::AudioTypeEnum::AUDIO_CLICK);
       Menu.ActiveFileLoad += 1;
       if(Menu.ActiveFileLoad > Menu.MenuEntriesFileLoad-1){Menu.ActiveFileLoad = Menu.MenuEntriesFileLoad-1;}
     }
 
     if(Key_LEFT_pressed || Joy_LEFT_pressed)
     {
-      AUDIO_Sound_Play(AUDIO_CLICK);
+      AUDIO_Sound_Play(Audio::AudioTypeEnum::AUDIO_CLICK);
       Menu.ActiveFileLoad -= 1;
       if(Menu.ActiveFileLoad < 0){Menu.ActiveFileLoad = 0;}
     }
 
     if(Key_DOWN_pressed || Joy_DOWN_pressed)
     {
-      AUDIO_Sound_Play(AUDIO_CLICK);
+      AUDIO_Sound_Play(Audio::AudioTypeEnum::AUDIO_CLICK);
       if(Menu.ActiveFileLoad < Menu.MenuEntriesFileLoad-Menu.Cols){Menu.ActiveFileLoad = Menu.ActiveFileLoad + Menu.Cols;}
     }
 
     if(Key_UP_pressed || Joy_UP_pressed)
     {
-      AUDIO_Sound_Play(AUDIO_CLICK);
+      AUDIO_Sound_Play(Audio::AudioTypeEnum::AUDIO_CLICK);
       if(Menu.ActiveFileLoad > Menu.Cols-1){Menu.ActiveFileLoad = Menu.ActiveFileLoad - Menu.Cols;}
     }
 

@@ -60,7 +60,7 @@ void LOOP_Editor_Stages()
     //if(Key_F6_pressed){ME.CurrentEnemyType = 0;}
     if(Key_F7_pressed) {ME.SquareThisBlock = !ME.SquareThisBlock;}
 
-    if(Key_CTRL && Key_S_pressed) {STAGE_Save(ME.Stage); AUDIO_Sound_Play(AUDIO_DISK);}
+    if(Key_CTRL && Key_S_pressed) {STAGE_Save(ME.Stage); AUDIO_Sound_Play(Audio::AudioTypeEnum::AUDIO_DISK);}
     if(Key_F11_pressed){ME.SingleTileMode = !ME.SingleTileMode;}
 
     ScrollSpeed = 25;

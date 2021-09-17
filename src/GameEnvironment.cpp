@@ -14,6 +14,7 @@ bool GameEnvironment::define()
 
   // ContentManager::LoadStages() // sets stage/stageShort in GameEnvironment::Def_FileNames
   ContentManager content;
+  
 
   GameEnvironment::initGameWorld();
 

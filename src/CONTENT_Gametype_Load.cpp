@@ -33,15 +33,15 @@ void GAMETYPE_Load()
   snprintf(FileName.Interface, sizeof(char) * 128, "base/Interface.png");
   snprintf(FileName.Font, sizeof(char) * 128, "base/Font.png");
 
-  snprintf(FileName.WavChunk[AUDIO_DISK], sizeof(char) * 128, "base/audio/disk.wav");
-  snprintf(FileName.WavChunk[AUDIO_JUMP], sizeof(char) * 128, "base/audio/jump.wav");
-  snprintf(FileName.WavChunk[AUDIO_STOMP], sizeof(char) * 128, "base/audio/stomp.wav");
-  snprintf(FileName.WavChunk[AUDIO_KILLED], sizeof(char) * 128, "base/audio/died.wav");
-  snprintf(FileName.WavChunk[AUDIO_DING], sizeof(char) * 128, "base/audio/ding.wav");
-  snprintf(FileName.WavChunk[AUDIO_CLICK], sizeof(char) * 128, "base/audio/click.wav");
-  snprintf(FileName.WavChunk[AUDIO_GOTPOWERUP], sizeof(char) * 128, "base/audio/morphing.wav");
-  snprintf(FileName.WavChunk[AUDIO_SHOOT], sizeof(char) * 128, "base/audio/shoot.wav");
-  snprintf(FileName.WavChunk[AUDIO_CRACK], sizeof(char) * 128, "base/audio/crack.wav");
+  snprintf(FileName.WavChunk[static_cast<int>(Audio::AudioTypeEnum::AUDIO_DISK)], sizeof(char) * 128, "base/audio/disk.wav");
+  snprintf(FileName.WavChunk[static_cast<int>(Audio::AudioTypeEnum::AUDIO_JUMP)], sizeof(char) * 128, "base/audio/jump.wav");
+  snprintf(FileName.WavChunk[static_cast<int>(Audio::AudioTypeEnum::AUDIO_STOMP)], sizeof(char) * 128, "base/audio/stomp.wav");
+  snprintf(FileName.WavChunk[static_cast<int>(Audio::AudioTypeEnum::AUDIO_KILLED)], sizeof(char) * 128, "base/audio/died.wav");
+  snprintf(FileName.WavChunk[static_cast<int>(Audio::AudioTypeEnum::AUDIO_DING)], sizeof(char) * 128, "base/audio/ding.wav");
+  snprintf(FileName.WavChunk[static_cast<int>(Audio::AudioTypeEnum::AUDIO_CLICK)], sizeof(char) * 128, "base/audio/click.wav");
+  snprintf(FileName.WavChunk[static_cast<int>(Audio::AudioTypeEnum::AUDIO_GOTPOWERUP)], sizeof(char) * 128, "base/audio/morphing.wav");
+  snprintf(FileName.WavChunk[static_cast<int>(Audio::AudioTypeEnum::AUDIO_SHOOT)], sizeof(char) * 128, "base/audio/shoot.wav");
+  snprintf(FileName.WavChunk[static_cast<int>(Audio::AudioTypeEnum::AUDIO_CRACK)], sizeof(char) * 128, "base/audio/crack.wav");
 
   snprintf(FileName.BGM_Title, sizeof(char) * 128, "base/music/title.it");
   snprintf(FileName.BGM_Outdoors, sizeof(char) * 128, "base/music/outdoors.it");

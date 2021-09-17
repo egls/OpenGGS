@@ -37,7 +37,7 @@ void LOOP_Editor_Tiles()
     //if(Key_F2_pressed) {GV.GameType = TYPE_OPENGGS; GAMETYPE_Load();}
     //if(Key_F3_pressed) {GV.GameType = TYPE_AMIGA;   GAMETYPE_Load();}
 
-    if(Key_CTRL && Key_S_pressed)      {Tilesheet_Save(); AUDIO_Sound_Play(AUDIO_DISK);}
+    if(Key_CTRL && Key_S_pressed)      {Tilesheet_Save(); AUDIO_Sound_Play(Audio::AudioTypeEnum::AUDIO_DISK);}
     if(Key_LEFT)                       {TE.ScrollX = 4;}
     if(Key_RIGHT)                      {TE.ScrollX = -4;}
     if(Key_UP)                         {TE.ScrollY = 4;}

@@ -31,7 +31,7 @@ void PC_Collision_PowerUpBlock()
     }
     if(HitAPowerUpBlock)
     {
-       AUDIO_Sound_Play(AUDIO_DING);
+       AUDIO_Sound_Play(Audio::AudioTypeEnum::AUDIO_DING);
       //timecounter_Animation_Tiles_Fast = SDL_GetTicks(); // RESET ANIMATION COUNTER
       if(StageC64.TileNumber[TileX-2][TileY] == StageC64.TileNumber[TileX][TileY]-2 &&
          TileType[StageC64.TileNumber[TileX-2][TileY]].PowerUpBlock)
@@ -106,7 +106,7 @@ void PC_Collision_CoinBlock()
     }
     if(HitACoinBlock)
     {
-      AUDIO_Sound_Play(AUDIO_DING);
+      AUDIO_Sound_Play(Audio::AudioTypeEnum::AUDIO_DING);
       //timecounter_Animation_Tiles_Fast = SDL_GetTicks(); // RESET ANIMATION COUNTER
       if(StageC64.TileNumber[TileX-2][TileY] == StageC64.TileNumber[TileX][TileY]-2 &&
          TileType[StageC64.TileNumber[TileX-2][TileY]].CoinBlock)
@@ -181,7 +181,7 @@ void PC_Collision_CoinBlockHelmet()
     }
     if(HitACoinBlock)
     {
-       AUDIO_Sound_Play(AUDIO_DING);
+       AUDIO_Sound_Play(Audio::AudioTypeEnum::AUDIO_DING);
       //timecounter_Animation_Tiles_Fast = SDL_GetTicks(); // RESET ANIMATION COUNTER
       if(StageC64.TileNumber[TileX-2][TileY] == StageC64.TileNumber[TileX][TileY]-2 &&
          TileType[StageC64.TileNumber[TileX-2][TileY]].CoinBlockHelmet)
@@ -267,7 +267,7 @@ void PC_Collision_Breakable()
         StageC64.TileNumber[TileX-1][TileY-1] += 3; StageC64.AnimationCounter[TileX-1][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
         StageC64.TileNumber[TileX][TileY-1] += 3;   StageC64.AnimationCounter[TileX][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
         HitABreakable = false;
-        AUDIO_Sound_Play(AUDIO_CRACK);
+        AUDIO_Sound_Play(Audio::AudioTypeEnum::AUDIO_CRACK);
       }
       if(HitABreakable && StageC64.TileNumber[TileX+2][TileY] == StageC64.TileNumber[TileX][TileY]+2 &&
          TileType[StageC64.TileNumber[TileX+2][TileY]].Breakable)
@@ -279,7 +279,7 @@ void PC_Collision_Breakable()
         StageC64.TileNumber[TileX+1][TileY-1] += 3; StageC64.AnimationCounter[TileX+1][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
         StageC64.TileNumber[TileX][TileY-1] += 3;   StageC64.AnimationCounter[TileX][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
         HitABreakable = false;
-        AUDIO_Sound_Play(AUDIO_CRACK);
+        AUDIO_Sound_Play(Audio::AudioTypeEnum::AUDIO_CRACK);
       }
       if(HitABreakable &&
          StageC64.TileNumber[TileX+1][TileY] == StageC64.TileNumber[TileX][TileY]+1 &&
@@ -293,7 +293,7 @@ void PC_Collision_Breakable()
         StageC64.TileNumber[TileX-1][TileY-1] += 3; StageC64.AnimationCounter[TileX-1][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
         StageC64.TileNumber[TileX+1][TileY-1] += 3; StageC64.AnimationCounter[TileX+1][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
         StageC64.TileNumber[TileX][TileY-1] += 3;   StageC64.AnimationCounter[TileX][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
-        AUDIO_Sound_Play(AUDIO_CRACK);
+        AUDIO_Sound_Play(Audio::AudioTypeEnum::AUDIO_CRACK);
       }
     }
   }
@@ -352,7 +352,7 @@ void PC_Collision_DropStone()
         StageC64.TileNumber[TileX-1][TileY-1] = 0; StageC64.AnimationCounter[TileX-1][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
         StageC64.TileNumber[TileX][TileY-1] = 0;   StageC64.AnimationCounter[TileX][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
         HitABreakable = false;
-        AUDIO_Sound_Play(AUDIO_CRACK);
+        AUDIO_Sound_Play(Audio::AudioTypeEnum::AUDIO_CRACK);
       }
       if(HitABreakable && StageC64.TileNumber[TileX+2][TileY] == StageC64.TileNumber[TileX][TileY]+2 &&
          TileType[StageC64.TileNumber[TileX+2][TileY]].DropStone)
@@ -367,7 +367,7 @@ void PC_Collision_DropStone()
         StageC64.TileNumber[TileX+1][TileY-1] = 0; StageC64.AnimationCounter[TileX+1][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
         StageC64.TileNumber[TileX][TileY-1] = 0;   StageC64.AnimationCounter[TileX][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
         HitABreakable = false;
-        AUDIO_Sound_Play(AUDIO_CRACK);
+        AUDIO_Sound_Play(Audio::AudioTypeEnum::AUDIO_CRACK);
       }
       if(HitABreakable &&
          StageC64.TileNumber[TileX+1][TileY] == StageC64.TileNumber[TileX][TileY]+1 &&
@@ -383,7 +383,7 @@ void PC_Collision_DropStone()
         StageC64.TileNumber[TileX-1][TileY-1] = 0; StageC64.AnimationCounter[TileX-1][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
         StageC64.TileNumber[TileX+1][TileY-1] = 0; StageC64.AnimationCounter[TileX+1][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
         StageC64.TileNumber[TileX][TileY-1] = 0;   StageC64.AnimationCounter[TileX][TileY-1] = GameEnvironment::getWorld().TileSwitchSpeed;
-        AUDIO_Sound_Play(AUDIO_CRACK);
+        AUDIO_Sound_Play(Audio::AudioTypeEnum::AUDIO_CRACK);
       }
     }
   }

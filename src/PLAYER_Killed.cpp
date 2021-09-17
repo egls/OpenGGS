@@ -20,7 +20,7 @@ void PC_Killed()
   PC.JumpStrength = 50;
   PC_Jump();
   PC.Lives -= 1;
-  AUDIO_Sound_Play(AUDIO_KILLED);
+  AUDIO_Sound_Play(Audio::AudioTypeEnum::AUDIO_KILLED);
 
   for(i=1;i<10;i++)
   {

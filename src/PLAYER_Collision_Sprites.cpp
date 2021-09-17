@@ -48,7 +48,7 @@ void PC_Check_Collision_PowerUp(int PowerUpNumber)
 
   if(PowerUpCollected)
   {
-    AUDIO_Sound_Play(AUDIO_DING);
+    AUDIO_Sound_Play(Audio::AudioTypeEnum::AUDIO_DING);
     Sprite_PowerUp[PowerUpNumber].Active = false;
     if(PC.PowerUp<8){PC_PowerUp_Set(PowerUpNumber);}
     //if(PC.PowerUp>0){PC.Mode = PC_MODE2;}
@@ -83,7 +83,7 @@ void PC_Check_Collision_Enemy(int EnemyNumber)
         Enemy[EnemyNumber].Alive = false;
         PC.JumpOnGoing = true;
         PC.JumpVelocity = PC.JumpStrength;
-        AUDIO_Sound_Play(AUDIO_STOMP);
+        AUDIO_Sound_Play(Audio::AudioTypeEnum::AUDIO_STOMP);
       }
     }
     if((PCY2 > EY1 && PCY2 < EY2) || (PCY1 > EY1 && PCY1 < EY2)) // FULL HEIGHT OF PLAYER
