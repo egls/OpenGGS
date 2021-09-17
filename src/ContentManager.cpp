@@ -34,7 +34,7 @@ std::string ContentManager::getSelectedStageFile()
 bool ContentManager::selectStageFileToLoad(int stageFileNumber)
 {
     auto it = stageList.begin();
-    std::advance(it, stageFileNumber-1);
+    std::advance(it, stageFileNumber);
     if (it != stageList.end())
     {
         selectedStageFile = *it;

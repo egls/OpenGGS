@@ -1,7 +1,10 @@
 #include "globals.h"
 
+#include "ContentManager.hpp"
+
 Text_Offset_Def StageFile_Load;
-void Load_Stagefile(int StagefileNumber);
+
+void Load_Stagefile(int StagefileNumber); 
 
 // ##############################################
 // ##############################################
