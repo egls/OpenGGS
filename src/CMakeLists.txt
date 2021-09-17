@@ -44,7 +44,7 @@ target_sources(${CMAKE_PROJECT_NAME}
     STAGE_Interface_Draw.cpp
 
     # AUDIO
-    AUDIO.cpp
+    Audio.cpp
 
     # ENEMIES 
     ENEMIES.cpp
