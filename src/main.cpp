@@ -3,8 +3,8 @@
 #include "globals.h"
 
 // needed because SDL does not create stdout and stderr anymore...
-FILE * my_stdout = freopen ("my_stdout.txt", "wb" /*or "wt"*/, stdout);
-FILE * my_stderr = freopen ("my_stderr.txt", "wb" /*or "wt"*/, stderr);
+// FILE * my_stdout = freopen ("my_stdout.txt", "wb" /*or "wt"*/, stdout);
+// FILE * my_stderr = freopen ("my_stderr.txt", "wb" /*or "wt"*/, stderr);
 
 
 bool QuitProgram;
