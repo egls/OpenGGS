@@ -8,7 +8,7 @@ std::vector<std::string> ContentManager::stageList_;
 // set the classic levels as default
 std::string ContentManager::selectedStageFile = "base/stages/classic.lvl";
 
-ContentManager::ContentManager()
+ContentManager::ContentManager() 
 {
     auto directory = std::filesystem::directory_entry(path);
     getStageFileNames(directory);
@@ -30,28 +30,28 @@ void ContentManager::getStageFileNames(const std::filesystem::directory_entry &d
 
 std::string ContentManager::getSelectedStageFile()
 {
+    std::cout << "selectedStageFile: " << selectedStageFile << "\n";
     return selectedStageFile;
 }
 
 // former CONTENT_STAGES_Load_Write::Load_Stagefile(int)
 bool ContentManager::selectStageFileToLoad(int stageFileNumber)
 {
-    auto it = stageList.begin();
-    std::advance(it, stageFileNumber);
-    if (it != stageList.end())
-    {
-        selectedStageFile = *it;
-        //   AUDIO_Sound_Play(AUDIO_DISK); TODO: AudioManager::PlaySound(AudioDisk)
+    std::cout << "selectedStageFileToLoad() : " << stageFileNumber << "\n";
+    if(stageFileNumber >= 0 && stageFileNumber < stageList_.size()){
+        selectedStageFile = stageList_.at(stageFileNumber);
+          //   AUDIO_Sound_Play(AUDIO_DISK); TODO: AudioManager::PlaySound(AudioDisk)
         //   STAGES_Import();
         //   QuitToMenu = true;
         return true;
     }
+
     return false;
 }
 
-std::list<std::string> ContentManager::getStageList()
+std::vector<std::string> ContentManager::getStageList()
 {
-    return stageList;
+    return stageList_;
 }
 
 std::vector<std::string> ContentManager::getStageShortList()

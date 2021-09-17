@@ -12,7 +12,7 @@ public:
     ContentManager();
 
     // STAGE FILE
-    std::list<std::string> getStageList();
+    std::vector<std::string> getStageList();
     static std::vector<std::string> getStageShortList();
     static std::string getSelectedStageFile();
     static bool selectStageFileToLoad(int stageFileNumber);
@@ -20,9 +20,8 @@ public:
 
 private:
     void getStageFileNames(const std::filesystem::directory_entry &dir); // fill stagesList
-    static std::list<std::string> stageList;
+    static std::vector<std::string> stageList_;
     static std::vector<std::string> stageShortList_;
-    // std::list<std::string> stageShortList;
     static std::string selectedStageFile;
 };
 
