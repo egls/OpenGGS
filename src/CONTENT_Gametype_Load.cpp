@@ -18,9 +18,10 @@ void GAMETYPE_Load()
   if(GV.GameType == TYPE_C64 && !GV.DirC64Exists){GV.GameType = TYPE_OPENGGS;}
   if(GV.GameType == TYPE_OPENGGS && !GV.DirDefaultExists){GV.GameType = TYPE_C64;}
 
-  snprintf(FileName.Stage[0], sizeof(char) * 128, "base/stages/classic.lvl");
+  // // egls commented out, not sure it is needed
+  // snprintf(FileName.Stage[0], sizeof(char) * 128, "base/stages/classic.lvl");
 
-  //snprintf(FileName.Stage[0], sizeof(char) * 128, FileName.Stage[2]);
+  // snprintf(FileName.Stage[0], sizeof(char) * 128, FileName.Stage[2]);
 
   snprintf(FileName.Tiles, sizeof(char) * 128, "base/default/Tiles.png");
   snprintf(FileName.Player, sizeof(char) * 128, "base/default/Player.png");
