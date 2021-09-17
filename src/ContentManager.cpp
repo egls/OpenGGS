@@ -4,8 +4,9 @@
 
 static const std::filesystem::path path = "base/stages/"; // read this from a config file
 std::vector<std::string> ContentManager::stageShortList_;
-std::list<std::string> ContentManager::stageList;
-std::string ContentManager::selectedStageFile;
+std::vector<std::string> ContentManager::stageList_;
+// set the classic levels as default
+std::string ContentManager::selectedStageFile = "base/stages/classic.lvl";
 
 ContentManager::ContentManager()
 {
