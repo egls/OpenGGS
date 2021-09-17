@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-static const std::filesystem::path path = "../base/stages/"; // read this from a config file
+static const std::filesystem::path path = "base/stages/"; // read this from a config file
 std::vector<std::string> ContentManager::stageShortList_;
 std::list<std::string> ContentManager::stageList;
 std::string ContentManager::selectedStageFile;
