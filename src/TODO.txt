@@ -1,1 +1,2 @@
 1. fix stage loading so that initiali the classic stage is loaded
+2. Loading stage file crashes
