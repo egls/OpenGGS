@@ -59,7 +59,8 @@ void LOOP_Stagefile_Load()
 
     if(!Key_LALT)
     {
-      if(Key_ENTER_pressed || Joy_OK_pressed) {GV.RandomLevels = false; Load_Stagefile(Menu.ActiveFileLoad+1);}
+      if(Key_ENTER_pressed || Joy_OK_pressed) {GV.RandomLevels = false; 
+      ContentManager::selectStageFileToLoad(Menu.ActiveFileLoad);}
     }
 
     Update_Screen();  // draw the scene
