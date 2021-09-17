@@ -112,7 +112,8 @@ void LOOP_Stagefile_Load_Draw()
     DstRect.x = Menu.x[x]+86;
     DstRect.y = Menu.y[x]+56;
     SDL_RenderCopyEx(gRenderer, InterfaceTexture, &SrcRect, &DstRect, 0, NULL, SDL_FLIP_NONE );
-    Print(Menu.x[x-1]+10,Menu.y[x-1]+10,0,0,FileName.StageShort[x]);
+    
+    Print(Menu.x[x-1]+10,Menu.y[x-1]+10,0,0,   ContentManager::getStageShortList().at(x).c_str());
   }
 }
 
