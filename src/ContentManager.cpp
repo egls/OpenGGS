@@ -51,7 +51,7 @@ std::list<std::string> ContentManager::getStageList()
     return stageList;
 }
 
-std::list<std::string> ContentManager::getStageShortList()
+std::vector<std::string> ContentManager::getStageShortList()
 {
-    return stageShortList;
+    return stageShortList_;
 }
