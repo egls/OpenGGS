@@ -16,11 +16,13 @@ ContentManager::ContentManager()
 
 void ContentManager::getStageFileNames(const std::filesystem::directory_entry &dir)
 {
+    std::cout << "getStageFileNames() " << dir.path() << "\n";
     if (dir.exists())
     {
         for (const auto &entry : std::filesystem::directory_iterator(dir))
         {
-            stageList.emplace_back(entry.path());                  // result[0] "../base/stages/classic.lvl"
+            std::cout << entry.path() << "\n";
+            stageList_.emplace_back(entry.path());                  // result[0] "../base/stages/classic.lvl"
             stageShortList_.emplace_back(entry.path().filename()); // classic.lvl
         }
     }
