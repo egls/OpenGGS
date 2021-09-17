@@ -400,38 +400,7 @@ void STAGE_Copy_To_StageC64()
   }
 }
 
-// ##############################################
-// ##############################################
-// ##############################################
 
-// void STAGES_Files_Names_Load() // DONE: ContentManager getStagesFileNames
-// {
-//   DIR *dir;
-//   struct dirent *ent;
-//   int x;
-//   // init array -> we do not need it
-//   for(x=0; x<20; x++)
-//   {
-//     snprintf(FileName.Stage[x], sizeof(char) * 128, "---");
-//   }
-
-//   x = 1;
-//   // check if directory exists
-//   if ((dir = opendir ("../base/stages/")) != NULL) {
-//     /* print all the files and directories within directory */
-//     while ((ent = readdir (dir)) != NULL)
-//     {
-//       if(strncmp("..", ent->d_name, 2) != 0 && strncmp(".", ent->d_name, 2) != 0)
-//       {
-//         snprintf(FileName.Stage[x], sizeof(char) * 128, "../base/stages/%s",ent->d_name);
-//         snprintf(FileName.StageShort[x], sizeof(char) * 128, ent->d_name);
-//         x++;
-//         if(x>19){x=19;}
-//       }
-//     }
-//     closedir (dir);
-//   }
-// }
 
 // ##############################################
 // ##############################################
