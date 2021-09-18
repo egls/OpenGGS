@@ -1,3 +1,9 @@
+target_include_directories(${CMAKE_PROJECT_NAME}
+                            PRIVATE include 
+                           ${CMAKE_CURRENT_SOURCE_DIR}
+                           ${spdlog_SOURCE_DIR}/include
+                           )
+
 target_sources(${CMAKE_PROJECT_NAME}
 
     PRIVATE
@@ -87,4 +93,5 @@ target_link_libraries(${PROJECT_NAME}
                       ${SDL2_LIBRARY} 
                       ${SDL2_IMAGE_LIBRARIES}
                       ${SDL2_MIXER_LIBRARIES}
+                      spdlog::spdlog 
 )
