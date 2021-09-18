@@ -1,5 +1,5 @@
 #include "ContentManager.hpp"
-
+#include "Audio.hpp"
 #include <iostream>
 
 static const std::filesystem::path path = "base/stages/"; // read this from a config file
