@@ -62,10 +62,10 @@ typedef struct
   char PowerUpDefinition[128];
   char Interface[128];
   char Font[128];
-  char WavChunk[20][128];
-  char BGM_Title[128];
-  char BGM_Outdoors[128];
-  char BGM_Indoors[128];
+  // char WavChunk[20][128];
+  // char BGM_Title[128];
+  // char BGM_Outdoors[128];
+  // char BGM_Indoors[128];
 } Def_FileNames;
 
 extern Def_FileNames FileName; // FILENAME BUFFERS
@@ -84,11 +84,11 @@ typedef struct
   int Resolution;
   bool ShowDebugInfos_Tiles;
   int GameType;
-  int VolumeSounds;
-  int VolumeMusic;
-  int TempMusicVolume;
-  int TempMusicOffCounter;
-  bool MusicEnabled;
+  int VolumeSounds;         // TODO: move to audio
+  int VolumeMusic;          // TODO: move to audio
+  int TempMusicVolume;      // TODO: move to audio
+  int TempMusicOffCounter;   // TODO: move to audio
+  bool MusicEnabled;        // TODO: move to audio
   bool DirDefaultExists;
   bool DirC64Exists;
   bool DirAmigaExists;
