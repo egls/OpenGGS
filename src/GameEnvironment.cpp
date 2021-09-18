@@ -174,8 +174,8 @@ void Options_Load()
     VolumePercentage_Sound = SavedOptions.VolumeSounds;
     VolumePercentage_Music = SavedOptions.VolumeMusic;
 
-    AUDIO_Volume_Change_Music(VolumePercentage_Music, false);
-    AUDIO_Volume_Change_Sound(VolumePercentage_Sound, false);
+    Audio::setMusicVolume(VolumePercentage_Music, false);
+    Audio::setSoundEffectsVolume(VolumePercentage_Sound, false);
     fclose(Options_File);
   }
 }
