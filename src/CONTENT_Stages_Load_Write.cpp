@@ -358,9 +358,9 @@ void STAGE_Load(int StageNumber, int CheckPointNumber, bool ShowSplashScreen, bo
 
   if(ShowSplashScreen && GV.SplashscreensEnabled){LOOP_Gameloop_Splashscreen();}
 
-  if(GV.Mode == MODE_GAMELOOP && StageC64.BackgroundColour == 0){AUDIO_Music_Play(Audio::MusicTypeEnum::MUSIC_OUTDOORS);}
-  if(GV.Mode == MODE_GAMELOOP && StageC64.BackgroundColour == 1){AUDIO_Music_Play(Audio::MusicTypeEnum::MUSIC_INDOORS);}
-  if(GV.Mode == MODE_MENU){AUDIO_Music_Play(Audio::MusicTypeEnum::MUSIC_MENU);}
+  if(GV.Mode == MODE_GAMELOOP && StageC64.BackgroundColour == 0){Audio::playMusic(Audio::MusicTypeEnum::MUSIC_OUTDOORS);}
+  if(GV.Mode == MODE_GAMELOOP && StageC64.BackgroundColour == 1){Audio::playMusic(Audio::MusicTypeEnum::MUSIC_INDOORS);}
+  if(GV.Mode == MODE_MENU){Audio::playMusic(Audio::MusicTypeEnum::MUSIC_MENU);}
 }
 
 // ##############################################
