@@ -2,7 +2,6 @@ class Audio
 {
 
 public:
-
     enum class AudioTypeEnum
     {
         AUDIO_DISK = 0,
