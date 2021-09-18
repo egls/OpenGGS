@@ -30,7 +30,7 @@ int main( int argc, char* args[] )
   defineAngles();
 
   Option_GameType_Load();
-  GAMETYPE_Load();
+  GAMETYPE_Load(); // Content load, audio define
 
 
   QuitProgram = false;
