@@ -1,208 +1,161 @@
 #include "globals.h"
 
-Mix_Chunk *AUDIO_CHUNK_Disk;
-Mix_Chunk *AUDIO_CHUNK_Jump;
-Mix_Chunk *AUDIO_CHUNK_Stomp;
-Mix_Chunk *AUDIO_CHUNK_Killed;
-Mix_Chunk *AUDIO_CHUNK_Ding;
-Mix_Chunk *AUDIO_CHUNK_Click;
-Mix_Chunk *AUDIO_CHUNK_GotPowerUp;
-Mix_Chunk *AUDIO_CHUNK_Shoot;
-Mix_Chunk *AUDIO_CHUNK_Crack;
+constexpr static int CHANNELS = 8;
+constexpr static int INITIAL_VOLUME = 25;
 
-Mix_Music *BGM_Title;
-Mix_Music *BGM_Outdoors;
-Mix_Music *BGM_Indoors;
+std::map<Audio::AudioTypeEnum, Audio::Sound> Audio::sound_map{};
+std::map<Audio::MusicTypeEnum, Audio::Music> Audio::music_map{};
 
-int VolumePercentage_Music;
-int VolumePercentage_Sound;
-int ShowVolume_Music;
-int ShowVolume_Sound;
-
-// ##############################################
-// ##############################################
-// ##############################################
-
-void AUDIO_Define()
+//-----------------------------------------------------------------------------
+// Audio constructor
+//-----------------------------------------------------------------------------
+Audio::Audio()
 {
-  //*********************************
-  // initialize sound
-  //Mix_OpenAudio(MIX_DEFAULT_FREQUENCY,MIX_DEFAULT_FORMAT,1,512);
-  Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024);
-  AUDIO_Volume_Change_Music(25, false); // SET VOLUME TO 25%
-  AUDIO_Volume_Change_Sound(25, false); // SET VOLUME TO 25%
-  Mix_AllocateChannels(8);              // ALLOCATE MIXING CHANNELS
 
-  //*********************************
-
-  Mix_FreeChunk(AUDIO_CHUNK_Disk);
-  AUDIO_CHUNK_Disk = NULL;
-  AUDIO_CHUNK_Disk = Mix_LoadWAV(FileName.WavChunk[static_cast<int>(Audio::AudioTypeEnum::AUDIO_DISK)]); //load the chunks
-
-  Mix_FreeChunk(AUDIO_CHUNK_Jump);
-  AUDIO_CHUNK_Jump = NULL;
-  AUDIO_CHUNK_Jump = Mix_LoadWAV(FileName.WavChunk[static_cast<int>(Audio::AudioTypeEnum::AUDIO_JUMP)]); //load the chunks
-
-  Mix_FreeChunk(AUDIO_CHUNK_Stomp);
-  AUDIO_CHUNK_Stomp = NULL;
-  AUDIO_CHUNK_Stomp = Mix_LoadWAV(FileName.WavChunk[static_cast<int>(Audio::AudioTypeEnum::AUDIO_STOMP)]); //load the chunks
-
-  Mix_FreeChunk(AUDIO_CHUNK_Killed);
-  AUDIO_CHUNK_Killed = NULL;
-  AUDIO_CHUNK_Killed = Mix_LoadWAV(FileName.WavChunk[static_cast<int>(Audio::AudioTypeEnum::AUDIO_KILLED)]); //load the chunks
-
-  Mix_FreeChunk(AUDIO_CHUNK_Ding);
-  AUDIO_CHUNK_Ding = NULL;
-  AUDIO_CHUNK_Ding = Mix_LoadWAV(FileName.WavChunk[static_cast<int>(Audio::AudioTypeEnum::AUDIO_DING)]); //load the chunks
-
-  Mix_FreeChunk(AUDIO_CHUNK_Click);
-  AUDIO_CHUNK_Click = NULL;
-  AUDIO_CHUNK_Click = Mix_LoadWAV(FileName.WavChunk[static_cast<int>(Audio::AudioTypeEnum::AUDIO_CLICK)]); //load the chunks
-
-  Mix_FreeChunk(AUDIO_CHUNK_GotPowerUp);
-  AUDIO_CHUNK_GotPowerUp = NULL;
-  AUDIO_CHUNK_GotPowerUp = Mix_LoadWAV(FileName.WavChunk[static_cast<int>(Audio::AudioTypeEnum::AUDIO_GOTPOWERUP)]); //load the chunks
-
-  Mix_FreeChunk(AUDIO_CHUNK_Shoot);
-  AUDIO_CHUNK_Shoot = NULL;
-  AUDIO_CHUNK_Shoot = Mix_LoadWAV(FileName.WavChunk[static_cast<int>(Audio::AudioTypeEnum::AUDIO_SHOOT)]); //load the chunks
-
-  Mix_FreeChunk(AUDIO_CHUNK_Crack);
-  AUDIO_CHUNK_Crack = NULL;
-  AUDIO_CHUNK_Crack = Mix_LoadWAV(FileName.WavChunk[static_cast<int>(Audio::AudioTypeEnum::AUDIO_CRACK)]); //load the chunks
-
-  Mix_FreeMusic(BGM_Title);
-  BGM_Title = NULL;
-  BGM_Title = Mix_LoadMUS(FileName.BGM_Title);
-
-  Mix_FreeMusic(BGM_Outdoors);
-  BGM_Outdoors = NULL;
-  BGM_Outdoors = Mix_LoadMUS(FileName.BGM_Outdoors);
-
-  Mix_FreeMusic(BGM_Indoors);
-  BGM_Indoors = NULL;
-  BGM_Indoors = Mix_LoadMUS(FileName.BGM_Indoors);
 }
 
-// ##############################################
-// ##############################################
-// ##############################################
+Audio::~Audio()
+{
 
-void AUDIO_Volume_Change_Music(int Percentage, bool ShowVolumeOverlay)
+  // close the audio mixer
+  Mix_CloseAudio();
+}
+//-----------------------------------------------------------------------------
+// Initialize Audio Subsystem
+//-----------------------------------------------------------------------------
+void Audio::initAudioSystem()
+{
+  std::cout << "initAudioSystem() \n";
+  sound_map.emplace(Audio::AudioTypeEnum::AUDIO_DISK, Sound{"base/audio/disk.wav", nullptr});
+  sound_map.emplace(Audio::AudioTypeEnum::AUDIO_JUMP, Sound{"base/audio/jump.wav", nullptr});
+  sound_map.emplace(Audio::AudioTypeEnum::AUDIO_STOMP, Sound{"base/audio/stomp.wav", nullptr});
+  sound_map.emplace(Audio::AudioTypeEnum::AUDIO_KILLED, Sound{"base/audio/died.wav", nullptr});
+  sound_map.emplace(Audio::AudioTypeEnum::AUDIO_DING, Sound{"base/audio/ding.wav", nullptr});
+  sound_map.emplace(Audio::AudioTypeEnum::AUDIO_CLICK, Sound{"base/audio/click.wav", nullptr});
+  sound_map.emplace(Audio::AudioTypeEnum::AUDIO_GOTPOWERUP, Sound{"base/audio/morphing.wav", nullptr});
+  sound_map.emplace(Audio::AudioTypeEnum::AUDIO_SHOOT, Sound{"base/audio/shoot.wav", nullptr});
+  sound_map.emplace(Audio::AudioTypeEnum::AUDIO_CRACK, Sound{"base/audio/crack.wav", nullptr});
+
+  music_map.emplace(Audio::MusicTypeEnum::MUSIC_MENU, Music{"base/music/title.it", nullptr});
+  music_map.emplace(Audio::MusicTypeEnum::MUSIC_OUTDOORS, Music{"base/music/outdoors.it", nullptr});
+  music_map.emplace(Audio::MusicTypeEnum::MUSIC_INDOORS, Music{"base/music/indoors.it", nullptr});
+
+  // Open mixer with a defined audio format
+  Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024);
+  // Allocate number of mixing channels
+  Mix_AllocateChannels(CHANNELS);
+
+  // Set initial volume for sound effects and music
+  setMusicVolume(INITIAL_VOLUME, false);
+  setSoundEffectsVolume(INITIAL_VOLUME, false);
+
+  auto mix_free_chunk = [&](Audio::AudioTypeEnum type)
+  {
+    auto &sound = sound_map.at(type);
+    Mix_FreeChunk(sound.chunk);
+    sound.chunk = nullptr;
+    sound.chunk = Mix_LoadWAV(sound.fileName.c_str());
+  };
+
+  mix_free_chunk(Audio::AudioTypeEnum::AUDIO_DISK);
+  mix_free_chunk(Audio::AudioTypeEnum::AUDIO_JUMP);
+  mix_free_chunk(Audio::AudioTypeEnum::AUDIO_STOMP);
+  mix_free_chunk(Audio::AudioTypeEnum::AUDIO_KILLED);
+  mix_free_chunk(Audio::AudioTypeEnum::AUDIO_DING);
+  mix_free_chunk(Audio::AudioTypeEnum::AUDIO_CLICK);
+  mix_free_chunk(Audio::AudioTypeEnum::AUDIO_GOTPOWERUP);
+  mix_free_chunk(Audio::AudioTypeEnum::AUDIO_SHOOT);
+  mix_free_chunk(Audio::AudioTypeEnum::AUDIO_CRACK);
+
+  auto mix_free_music = [&](Audio::MusicTypeEnum type)
+  {
+    auto &music = music_map.at(type);
+    Mix_FreeMusic(music.music);
+    music.music = nullptr;
+    music.music = Mix_LoadMUS(music.fileName.c_str());
+  };
+  mix_free_music(Audio::MusicTypeEnum::MUSIC_MENU);
+  mix_free_music(Audio::MusicTypeEnum::MUSIC_OUTDOORS);
+  mix_free_music(Audio::MusicTypeEnum::MUSIC_INDOORS);
+}
+
+void Audio::setMusicVolume(int percentage, bool showVolumeOverlay)
 {
   int Value128 = 0;
-  // VOLUME OF SAMPLES
-  if (Percentage < 1)
+
+  // check and set lower bounds
+  if (percentage < 1)
   {
     Value128 = 0;
-    Percentage = 0;
+    percentage = 0;
   }
 
-  if (Percentage > 99)
+  // check and set upper bounds
+  if (percentage > 99)
   {
     Value128 = 128;
-    Percentage = 100;
+    percentage = 100;
   }
 
-  if (Percentage > 0 && Percentage < 100)
+  if (percentage > 0 && percentage < 100)
   {
-    Value128 = (int)(128 * Percentage / 100);
+    Value128 = static_cast<int>(128 * percentage / 100);
   }
 
-  VolumePercentage_Music = Percentage;
-  GV.VolumeMusic = Value128 / 4;
+  VolumePercentage_Music = percentage;
+  GV.VolumeMusic = Value128 / 4; // GameVariables.VolumeMusic
   Mix_VolumeMusic(GV.VolumeMusic);
 
-  if (ShowVolumeOverlay)
+  if (showVolumeOverlay)
   {
     ShowVolume_Music = 3;
   }
 }
 
-// ##############################################
-// ##############################################
-// ##############################################
-
-void AUDIO_Volume_Change_Sound(int Percentage, bool ShowVolumeOverlay)
+/* From Mix_VolumeMusix: Set the volume in the range of 0-128 of a specific channel or chunk.
+   If the specified channel is -1, set volume for all channels.
+   Returns the original volume.
+   If the specified volume is -1, just return the current volume.
+*/
+void Audio::setSoundEffectsVolume(int percentage, bool showVolumeOverlay)
 {
   int Value128 = 0;
   // VOLUME OF SAMPLES
-  if (Percentage < 1)
+  if (percentage < 1)
   {
     Value128 = 0;
-    Percentage = 0;
+    percentage = 0;
   }
 
-  if (Percentage > 99)
+  if (percentage > 99)
   {
     Value128 = 128;
-    Percentage = 100;
+    percentage = 100;
   }
 
-  if (Percentage > 0 && Percentage < 100)
+  if (percentage > 0 && percentage < 100)
   {
-    Value128 = (int)(128 * Percentage / 100);
+    Value128 = (int)(128 * percentage / 100);
   }
 
-  VolumePercentage_Sound = Percentage;
+  VolumePercentage_Sound = percentage;
   GV.VolumeSounds = Value128;
   Mix_Volume(-1, GV.VolumeSounds);
 
-  if (ShowVolumeOverlay)
+  if (showVolumeOverlay)
   {
     ShowVolume_Sound = 3;
   }
 }
 
-// ##############################################
-// ##############################################
-// ##############################################
-
-// void AUDIO_Sound_Play(int SoundNumber)
-void AUDIO_Sound_Play(Audio::AudioTypeEnum SoundNumber)
+void Audio::playSound(Audio::AudioTypeEnum type)
 {
-  //Mix_PlayChannel(-1,WavChunk[soundNumber],0);
   if (GV.VolumeSounds > 0)
   {
-    if (SoundNumber == Audio::AudioTypeEnum::AUDIO_DISK)
-    {
-      Mix_PlayChannel(-1, AUDIO_CHUNK_Disk, 0);
-    }
-    if (SoundNumber == Audio::AudioTypeEnum::AUDIO_JUMP)
-    {
-      Mix_PlayChannel(-1, AUDIO_CHUNK_Jump, 0);
-    }
-    if (SoundNumber == Audio::AudioTypeEnum::AUDIO_STOMP)
-    {
-      Mix_PlayChannel(-1, AUDIO_CHUNK_Stomp, 0);
-    }
-    if (SoundNumber == Audio::AudioTypeEnum::AUDIO_KILLED)
-    {
-      Mix_PlayChannel(-1, AUDIO_CHUNK_Killed, 0);
-    }
-    if (SoundNumber == Audio::AudioTypeEnum::AUDIO_DING)
-    {
-      Mix_PlayChannel(-1, AUDIO_CHUNK_Ding, 0);
-    }
-    if (SoundNumber == Audio::AudioTypeEnum::AUDIO_CLICK)
-    {
-      Mix_PlayChannel(-1, AUDIO_CHUNK_Click, 0);
-    }
-    if (SoundNumber == Audio::AudioTypeEnum::AUDIO_GOTPOWERUP)
-    {
-      Mix_PlayChannel(-1, AUDIO_CHUNK_GotPowerUp, 0);
-    }
-    if (SoundNumber == Audio::AudioTypeEnum::AUDIO_SHOOT)
-    {
-      Mix_PlayChannel(-1, AUDIO_CHUNK_Shoot, 0);
-    }
-    if (SoundNumber == Audio::AudioTypeEnum::AUDIO_CRACK)
-    {
-      Mix_PlayChannel(-1, AUDIO_CHUNK_Crack, 0);
-    }
+    Mix_PlayChannel(-1, sound_map.at(type).chunk, 0);
   }
 
-  if (SoundNumber == Audio::AudioTypeEnum::AUDIO_GOTPOWERUP)
+  if (type == Audio::AudioTypeEnum::AUDIO_GOTPOWERUP)
   {
     GV.TempMusicVolume = GV.VolumeMusic;
     GV.VolumeMusic = 0;
@@ -211,28 +164,16 @@ void AUDIO_Sound_Play(Audio::AudioTypeEnum SoundNumber)
   }
 }
 
-// ##############################################
-// ##############################################
-// ##############################################
-
-void AUDIO_Music_Play(Audio::MusicTypeEnum MusicNumber)
+void Audio::playMusic(Audio::MusicTypeEnum type)
 {
   if (GV.VolumeMusic > 0 && GV.MusicEnabled)
   {
-    // PLAY MUSIC
-
-    if (MusicNumber == Audio::MusicTypeEnum::MUSIC_MENU)
-    {
-      Mix_PlayMusic(BGM_Title, -1);
-    }
-    if (MusicNumber == Audio::MusicTypeEnum::MUSIC_OUTDOORS)
-    {
-      Mix_PlayMusic(BGM_Outdoors, -1);
-    }
-    if (MusicNumber == Audio::MusicTypeEnum::MUSIC_INDOORS)
-    {
-      Mix_PlayMusic(BGM_Indoors, -1);
-    }
+    Mix_PlayMusic(music_map.at(type).music, -1);
     // if(MusicNumber == MUSIC_HIGHSCORE) {Mix_PlayMusic(BackgroundMusic[MUSIC_HIGHSCORE],-1);}
   }
 }
+
+int VolumePercentage_Music;
+int VolumePercentage_Sound;
+int ShowVolume_Music;
+int ShowVolume_Sound;

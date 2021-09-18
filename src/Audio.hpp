@@ -1,8 +1,11 @@
+#pragma once
+#include <SDL_mixer.h>
+#include <map>
+
 class Audio
 {
-
-public:
-    enum class AudioTypeEnum
+    public:
+     enum class AudioTypeEnum
     {
         AUDIO_DISK = 0,
         AUDIO_JUMP = 1,
@@ -24,19 +27,37 @@ public:
         MUSIC_HIGHSCORE = 3
     };
 
+
+    Audio();
+    ~Audio();
+    static void initAudioSystem();
+    static void playMusic(Audio::MusicTypeEnum type); 
+    static void playSound(Audio::AudioTypeEnum type); 
+    static void setMusicVolume(int percentage, bool showVolumeOverlay);
+    static void setSoundEffectsVolume(int percentage, bool showVolumeOverlay);
+
+
 private:
+   
+    struct Sound{
+        std::string fileName;
+        Mix_Chunk* chunk;
+    };
+    struct Music{
+        std::string fileName;
+        Mix_Music* music;
+    };
+
+    static std::map<Audio::AudioTypeEnum, Audio::Sound> sound_map;
+    static std::map<Audio::MusicTypeEnum, Audio::Music> music_map;
+
+    int music_volume; // extern int VolumePercentage_Music;
+    int sound_volume; // extern int VolumePercentage_Sound;
 };
 
 // ##############################################
 // ##############################################
 // ##############################################
-
-extern void AUDIO_Define();
-extern void AUDIO_Music_Play(Audio::MusicTypeEnum MusicNumber);
-extern void AUDIO_Sound_Play(Audio::AudioTypeEnum SoundNumber);
-extern void AUDIO_Volume_Change_Music(int VolumePercentage, bool ShowVolumeOverlay);
-extern void AUDIO_Volume_Change_Sound(int VolumePercentage, bool ShowVolumeOverlay);
-
 extern int VolumePercentage_Music;
 extern int VolumePercentage_Sound;
 extern int ShowVolume_Music;
@@ -46,3 +67,5 @@ extern Mix_Chunk *WavChunk[20]; //SOUND CHUNKS = WAV-FILES
 extern Mix_Music *BGM_Title;
 extern Mix_Music *BGM_Outdoors;
 extern Mix_Music *BGM_Indoors;
+
+
