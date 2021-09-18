@@ -93,7 +93,7 @@ void Delete_Coin(int x, int y)
   if(StageC64.TileNumber[x+1][y+1] == StageC64.TileNumber[x][y]+TS.Width+1){StageC64.TileNumber[x+1][y+1] = 0;}
   StageC64.TileNumber[x][y] = 0;
   // DELETE THE ENTIRE COIN
-  AUDIO_Sound_Play(Audio::AudioTypeEnum::AUDIO_DING);
+  Audio::playSound(Audio::AudioTypeEnum::AUDIO_DING);
   PC.Coins += 1;
   if(PC.Coins > 99){PC.Coins = 0; PC.Lives++;}
 }

@@ -197,7 +197,7 @@ void PC_PowerUp_Set(int PowerUpNumber)
   if(PowerUpNumber > 7){PowerUpNumber = 7;}
   if(PowerUpNumber < 1){PC.Mode = PC_MODE1;}
   if(PowerUpNumber > 0){PC.Mode = PC_MODE2;}
-  if(PowerUpNumber == 1){PC.MorphingCounter = PC_MORPHING_DURATION; AUDIO_Sound_Play(Audio::AudioTypeEnum::AUDIO_GOTPOWERUP);}
+  if(PowerUpNumber == 1){PC.MorphingCounter = PC_MORPHING_DURATION; Audio::playSound(Audio::AudioTypeEnum::AUDIO_GOTPOWERUP);}
   PC.PowerUp = PowerUpNumber;
 }
 

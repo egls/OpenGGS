@@ -12,7 +12,7 @@ void PC_Jump()
     PC.JumpVelocity = PC.JumpStrength;  // COULD BE MADE DEPENDENT ON WALKINGSPEED
     PC.OnGround = false;
     PC.OnGroundDelay = 0;
-    AUDIO_Sound_Play(Audio::AudioTypeEnum::AUDIO_JUMP);
+    Audio::playSound(Audio::AudioTypeEnum::AUDIO_JUMP);
   }
   // START THE JUMP
 
