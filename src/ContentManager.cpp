@@ -40,7 +40,7 @@ bool ContentManager::selectStageFileToLoad(int stageFileNumber)
     std::cout << "selectedStageFileToLoad() : " << stageFileNumber << "\n";
     if(stageFileNumber >= 0 && stageFileNumber < stageList_.size()){
         selectedStageFile = stageList_.at(stageFileNumber);
-          //   AUDIO_Sound_Play(AUDIO_DISK); TODO: AudioManager::PlaySound(AudioDisk)
+        Audio::playSound(Audio::AudioTypeEnum::AUDIO_DISK);
         //   STAGES_Import();
         //   QuitToMenu = true;
         return true;
