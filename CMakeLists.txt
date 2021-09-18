@@ -8,6 +8,8 @@ endif()
 
 project(openggs VERSION 0.1)
 
+message("${CMAKE_PROJECT_NAME} version ${CMAKE_PROJECT_VERSION}")
+
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 
 find_package(SDL2 REQUIRED)
