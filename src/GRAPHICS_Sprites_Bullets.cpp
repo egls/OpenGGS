@@ -22,7 +22,7 @@ void SPRITE_Bullet_Activate()
     //FIRE A BULLET
     if(PC.PowerUp > 1)
     {
-      AUDIO_Sound_Play(Audio::AudioTypeEnum::AUDIO_SHOOT);
+      Audio::playSound(Audio::AudioTypeEnum::AUDIO_SHOOT);
       Sprite_Bullet.PosY = PC.PosY-PC.ColHeightHalf-PC.ColHeightQuart;
       Sprite_Bullet.Active = true;
       Sprite_Bullet.Direction = PC.Direction;
