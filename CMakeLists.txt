@@ -16,6 +16,19 @@ find_package(SDL2 REQUIRED)
 find_package(SDL2_image REQUIRED)
 find_package(SDL2_mixer REQUIRED)
 
+include(FetchContent)
+
+FetchContent_Declare(spdlog 
+    GIT_REPOSITORY https://github.com/gabime/spdlog
+    GIT_TAG v1.8.5
+    GIT_SHALLOW ON 
+)
+
+set(SPDLOG_BUILD_SHARED OFF)
+set(BUILD_SHARED_LIBS OFF)
+
+FetchContent_MakeAvailable(spdlog)
+
 set(CMAKE_CXX_STANDARD 17)
 add_executable(${PROJECT_NAME} )
 target_include_directories( ${PROJECT_NAME}
