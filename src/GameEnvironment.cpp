@@ -1,20 +1,20 @@
 #include "GameEnvironment.hpp"
 #include "ContentManager.hpp"
 #include "globals.h"
+#include "spdlog/spdlog.h"
 
 GameWorld GameEnvironment::gameWorld = {};
 
-GameEnvironment::GameEnvironment()
-{ // maybe move to gameManager later
+GameEnvironment::GameEnvironment() { // maybe move to gameManager later
   // setup
+  spdlog::trace("GameEnvironment::ctor()");
 }
 
-bool GameEnvironment::define()
-{
-
-  // ContentManager::LoadStages() // sets stage/stageShort in GameEnvironment::Def_FileNames
+bool GameEnvironment::define() {
+  spdlog::trace("GameEnvironment::define()");
+  // ContentManager::LoadStages() // sets stage/stageShort in
+  // GameEnvironment::Def_FileNames
   ContentManager content;
-  
 
   GameEnvironment::initGameWorld();
 
@@ -22,8 +22,8 @@ bool GameEnvironment::define()
   return false;
 }
 
-void GameEnvironment::initGameWorld()
-{
+void GameEnvironment::initGameWorld() {
+  spdlog::trace("GameEnvironment::initGameWorld()");
   GameEnvironment::gameWorld.Gravity = 1;
   GameEnvironment::gameWorld.Friction = 1;
   GameEnvironment::gameWorld.TerminalVelocity = 15;
@@ -31,8 +31,8 @@ void GameEnvironment::initGameWorld()
   GameEnvironment::gameWorld.TileSwitchSpeed = 50;
 }
 
-GameWorld GameEnvironment::getWorld()
-{
+GameWorld GameEnvironment::getWorld() {
+  spdlog::trace("GameEnvironment::getWorld()");
   return gameWorld;
 }
 
@@ -45,8 +45,7 @@ char Path_to_ini[300];
 // ##############################################
 // ##############################################
 
-void GAME_ENVIRONMENT_Define()
-{
+void GAME_ENVIRONMENT_Define() {
 
   // Sprite_Bullet_Definition in GRAPHISC_Sprites
   Sprite_Bullet.ExplosionAnimation = 0;
@@ -59,7 +58,8 @@ void GAME_ENVIRONMENT_Define()
   GV.Screen_Height = 480;
   GV.ScreenWidthTiles = (int)(GV.Screen_Width / 16);
   GV.Resolution = RESOLUTION_640x480;
-  GV.PixelPerfectRunning = true; // SO FAR THERE IS NO REASON EVER TO SWITCH THIS TO FALSE
+  GV.PixelPerfectRunning =
+      true; // SO FAR THERE IS NO REASON EVER TO SWITCH THIS TO FALSE
   GV.RandomLevels = false;
 
   GV.ShowDebugInfos_Tiles = false;
@@ -94,8 +94,7 @@ void GAME_ENVIRONMENT_Define()
   GV.GameType = TYPE_AMIGA;
 
   int x;
-  for (x = 0; x < NUMBER_OF_TILES; x++)
-  {
+  for (x = 0; x < NUMBER_OF_TILES; x++) {
     TS.Solid[x] = true;
     TS.Exit[x] = false;
     TS.Lethal[x] = false;
@@ -106,8 +105,8 @@ void GAME_ENVIRONMENT_Define()
   Joystick.RIGHT = 3;
   Joystick.DOWN = 1;
   Joystick.LEFT = 2;
-  Joystick.Jump = 10; //BUTTON A
-  Joystick.OK = 10;   //BUTTON A
+  Joystick.Jump = 10; // BUTTON A
+  Joystick.OK = 10;   // BUTTON A
   Joystick.Shoot = 11;
   Joystick.ESCAPE = 5; // XBOX-BUTTON
 
@@ -120,16 +119,15 @@ void GAME_ENVIRONMENT_Define()
   // 13 = Y
   // 14 = XBOX-BUTTON
 
-  //Options_Load();
-  //Options_Save();
+  // Options_Load();
+  // Options_Save();
 }
 
 // ##############################################
 // ##############################################
 // ##############################################
 
-void Options_Save()
-{
+void Options_Save() {
   SavedOptions.Screen_Width = GV.Screen_Width;
   SavedOptions.Screen_Height = GV.Screen_Height;
   SavedOptions.VolumeMusic = VolumePercentage_Music;
@@ -139,36 +137,30 @@ void Options_Save()
   FILE *Options_File;
   Options_File = fopen("base/Options.oi", "wb");
 
-  if (Options_File != NULL)
-  {
+  if (Options_File != NULL) {
     fwrite(&SavedOptions, sizeof(SavedOptions), 1, Options_File); // write data
-    fclose(Options_File);                                         // close file again
+    fclose(Options_File); // close file again
   }
 }
 // ##############################################
 // ##############################################
 // ##############################################
 
-void Options_Load()
-{
+void Options_Load() {
   FILE *Options_File;
   Options_File = fopen("base/Options.oi", "rb");
 
-  if (Options_File != NULL)
-  {
+  if (Options_File != NULL) {
     fread(&SavedOptions, sizeof(SavedOptions), 1, Options_File);
     GV.Screen_Width = SavedOptions.Screen_Width;
     GV.Screen_Height = SavedOptions.Screen_Height;
-    if (GV.Screen_Width == 640 && GV.Screen_Height == 480)
-    {
+    if (GV.Screen_Width == 640 && GV.Screen_Height == 480) {
       GV.Resolution = RESOLUTION_640x480;
     }
-    if (GV.Screen_Width == 800 && GV.Screen_Height == 600)
-    {
+    if (GV.Screen_Width == 800 && GV.Screen_Height == 600) {
       GV.Resolution = RESOLUTION_800x600;
     }
-    if (GV.Screen_Width == 1280 && GV.Screen_Height == 720)
-    {
+    if (GV.Screen_Width == 1280 && GV.Screen_Height == 720) {
       GV.Resolution = RESOLUTION_1280x720;
     }
     VolumePercentage_Sound = SavedOptions.VolumeSounds;
@@ -184,18 +176,16 @@ void Options_Load()
 // ##############################################
 // ##############################################
 
-void Option_GameType_Load()
-{
+void Option_GameType_Load() {
   FILE *Options_File;
   Options_File = fopen("base/Options.oi", "rb");
 
-  if (Options_File != NULL)
-  {
+  if (Options_File != NULL) {
     fread(&SavedOptions, sizeof(SavedOptions), 1, Options_File);
     GV.GameType = SavedOptions.GameType;
     fclose(Options_File);
   }
-  //GAMETYPE_Load();
+  // GAMETYPE_Load();
 }
 
 // ##############################################
