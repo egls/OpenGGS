@@ -8,6 +8,7 @@ endif()
 
 project(openggs VERSION 0.1)
 
+
 message("${CMAKE_PROJECT_NAME} version ${CMAKE_PROJECT_VERSION}")
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
@@ -29,8 +30,10 @@ set(BUILD_SHARED_LIBS OFF)
 
 FetchContent_MakeAvailable(spdlog)
 
-set(CMAKE_CXX_STANDARD 17)
+
 add_executable(${PROJECT_NAME} )
+target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
+
 target_include_directories( ${PROJECT_NAME}
                     PRIVATE
                     ${SDL2_INCLUDE_DIR} 
