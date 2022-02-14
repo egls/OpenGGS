@@ -28,5 +28,16 @@
 	// "postCreateCommand": "gcc -v",
 
 	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
-	// "remoteUser": "vscode"
+	//"remoteUser": "vscode",
+	"features": {
+		"terraform": "latest",
+		"desktop-lite": {
+			"password": "vscode", 
+			"webPort": "6080",
+			"vncPort": "5901"
+		} 
+
+	}
+
+	// after start addPort in vscode: 5901 for vnc, 6080 for web
 }
