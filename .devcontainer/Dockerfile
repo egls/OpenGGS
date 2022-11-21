@@ -1,4 +1,4 @@
-FROM ubuntu:21.04
+FROM ubuntu:latest
 
 # switch to root
 USER root
